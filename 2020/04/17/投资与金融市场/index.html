@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="TSHOGX">
+
+
+    <meta name="subtitle" content="Valar Morghulis  Valar Dohaeris">
+
+
+
+
+<title>投资与金融市场 | -TSHOGX-</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">TSHOGX&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">TSHOGX&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">投资与金融市场</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">TSHOGX</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">April 17, 2020&nbsp;&nbsp;15:06:04</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>公司需要在很多Investment opportunities中选择最好的一个</p>
+<p>就需要evaluate projects的价值，进行Capital budgeting（资本预算）</p>
+<ul>
+<li>统一时间，比较不同时间的资金流动（cash flows）—— time value of money</li>
+<li>评估项目价值 —— The Net Present Value rule（NPV）</li>
+<li>其他评估法则</li>
+</ul>
+<h2 id="1-Time-value-of-money"><a href="#1-Time-value-of-money" class="headerlink" title="1. Time value of money"></a>1. Time value of money</h2><p>同等大小资金，今日的总优于未来的：未来有Uncertainty、Inflation通货膨胀、Opportunity cost</p>
+<p>compounding：复利</p>
+<h3 id="Future-Value"><a href="#Future-Value" class="headerlink" title="Future Value"></a>Future Value</h3><p>If you invest S units for T years at an interest rate r, you will get the future value</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320134839827.png" alt="FV definition"></p>
+<ul>
+<li>年利率 annual rate, annual nominal interest</li>
+<li>实际利率 Effective annual rate(EAR)：如果年利率是 $r_a$，每年复利 $k$ 次，每期利率r/k，每年实际利率为 $EAR=(1+r_a/k)^k - 1$ <ul>
+<li>复利次数k越多，EAR越大</li>
+<li>continuous compounding: 当k趋向于∞，EAR趋向于 $e^r − 1$ </li>
+</ul>
+</li>
+</ul>
+<p><strong>年利率r怎么估计的：</strong></p>
+<ul>
+<li>The yield curve(YC)：give us the interest rate for risk-free securities as a function of the maturity of the loan.（Part II）</li>
+<li>Plus a premium for risk</li>
+</ul>
+<p><strong>Nominal vs. Real interest rates</strong></p>
+<ul>
+<li>通货膨胀侵蚀购买力 Inflation erodes purchasing power</li>
+<li>Precisely, real rate $\approx r- \pi$ </li>
+</ul>
+<h3 id="Present-value-and-Discounting"><a href="#Present-value-and-Discounting" class="headerlink" title="Present value and Discounting"></a>Present value and Discounting</h3><p>Present Value：年利率为r的情况下，T年后若想要拿到S，今天需要投资PV</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320142107682.png" alt="Present Value"></p>
+<p>discounting：贴现 discount rate</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320142239389.png" alt="例题"></p>
+<p>注意：年利率r可以直接除365来获得日利率（默认复利）</p>
+<ul>
+<li>PV反比于 r 和 T ：利率越高，时间越长，两个时间的价值变化越大。</li>
+<li>今日收获PV = t时刻收获S</li>
+<li>为了比较未来不同时间点的cash flow，我们需要比较他们的PV</li>
+</ul>
+<h2 id="2-Multiple-cash-flows"><a href="#2-Multiple-cash-flows" class="headerlink" title="2. Multiple cash flows"></a>2. Multiple cash flows</h2><p>在不同时间点有不同的资金流动（同方向），那么折算为今日的资金流通（同方向）时有独立性</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320142926506.png" alt="Multiple cash flows"></p>
+<p>此时每个时间段都是包含本金的</p>
+<h3 id="永续年金-Perpetuities"><a href="#永续年金-Perpetuities" class="headerlink" title="永续年金 Perpetuities"></a>永续年金 Perpetuities</h3><p>因为这是一个无穷的constant cash flow，所以今日投资后未来就不能拿出本金，而是每期取出该期生成的利息</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320143457499.png" alt="Perpetuities"></p>
+<p>比如：British Consol issued</p>
+<blockquote>
+<p>What is the present value of a British Consol issued today that <strong>pays 5 per month in perpetuity</strong>? The annual discount rate is 6%.</p>
+</blockquote>
+<p><a href="[https://wiki.mbalib.com/wiki/%E6%B0%B8%E7%BB%AD%E5%B9%B4%E9%87%91](https://wiki.mbalib.com/wiki/永续年金)">link</a> </p>
+<h3 id="增长年金-Growing-perpetuities"><a href="#增长年金-Growing-perpetuities" class="headerlink" title="增长年金 Growing perpetuities"></a>增长年金 Growing perpetuities</h3><p>同样是无穷的cash flow，每期要求按照 g 增长，相当于每期的利率 r 减少了 g</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320143927352.png" alt="Growing perpetuities"></p>
+<h3 id="普通年金-Annuity-ordinary-annuity"><a href="#普通年金-Annuity-ordinary-annuity" class="headerlink" title="普通年金 Annuity (ordinary annuity)"></a>普通年金 Annuity (ordinary annuity)</h3><p>普通年金是指从第一期起，在一定时期内每期期末等额收付的系列款项，又称为后付年金。</p>
+<p>PV：每期都流动C，相当于一开始一次性流动PV——</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320150531390.png" alt="Annuity"><br>$$<br>A(C,r,T)=C(\frac{1}{(1+r)^1}+\frac{1}{(1+r)^2}+…+\frac{1}{(1+r)^T})<br>$$</p>
+<blockquote>
+<p><strong>例：</strong>现在存入一笔钱，准备在以后5年中每年末得到100元，如果利息率为10%，现在应存入多少钱?　</p>
+</blockquote>
+<p>FV：每期都流动A，相当于最终一次性流动——</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320151134404.png" alt="image-20200320151134404"></p>
+<blockquote>
+<p><strong>例：</strong>5年中每年年底存入银行100元，存款利率为8%，求第5年末年金终值为多少。　</p>
+</blockquote>
+<h2 id="3-Capital-budgeting"><a href="#3-Capital-budgeting" class="headerlink" title="3. Capital budgeting"></a>3. Capital budgeting</h2><p>衡量是否应该invest $I_0$ in a project that yields cash flows $[C0,C1,C2, . . .]$ in the future</p>
+<p>NPV：一个项目的PV和future cash flows + initial investment的差距</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320154432711.png" alt="NPV"></p>
+<ul>
+<li>NPV为正时接受项目</li>
+<li>选择最大的NPV</li>
+<li>当公司选择投资positive-NPV project，公司价值(and hence shareholder value)增长NPV</li>
+</ul>
+<h3 id="如何选择discount-rate——OCC"><a href="#如何选择discount-rate——OCC" class="headerlink" title="如何选择discount rate——OCC"></a>如何选择discount rate——OCC</h3><p>一般来说，NPV将随着r的增加而降低</p>
+<p>合适的r是公司在保持风险不变的情况下从其他地方的替代投资（例如，债券市场）获得的收益率</p>
+<p>OCC：替代投资的费率，资本机会成本（Opportunity Cost of Capital）</p>
+<ul>
+<li>项目没有风险（不太可能）：选择与项目相同期限的国库券 T-bill 收益率作为NPV计算的折现率</li>
+<li>项目有风险：量化其风险，并采用具有相同风险程度的金融资产收益（Part II）</li>
+</ul>
+<h3 id="如何预测cash-flow——IS"><a href="#如何预测cash-flow——IS" class="headerlink" title="如何预测cash flow——IS"></a>如何预测cash flow——IS</h3><p>Income Statement: Firms report revenues, costs and profits, are written with accounting profits in mind, not cash flows</p>
+<p>评估项目价值时，我们需要cash flow的信息，而不是accounting profits</p>
+<p>Important rules:</p>
+<ul>
+<li>Use cash flows, not accounting numbers</li>
+<li>Use incremental cash flows: CF(w/ project) - CF(w/o project)</li>
+<li>Use nominal discount (interest) rates for nominal CFs</li>
+<li>Use real discount (interest) rates for real CFs</li>
+<li>Use after-tax CFs</li>
+<li>Do not include sunk costs in the NPV calculation</li>
+</ul>
+<p>如何从IS中提取相关信息？</p>
+<ol>
+<li>不要使用沉没成本 Do not use sunk costs: money paid before the project is already lost</li>
+<li>消除非现金项目 Eliminate non-cash items (such as depreciation贬值)</li>
+<li>扣除营运资金变动 Deduct changes in working capital</li>
+<li>考虑项目结束时资产的转售价值 Consider resale value of assets at the end of the project</li>
+</ol>
+<hr>
+<p>Working capital：</p>
+<p>营运资金是经营业务所需的现金</p>
+<p>Working capital = (Accounts receivable) + (Inventories) - (Accounts payable)（应收账款）+（库存）-（应付账款）</p>
+<p>一年内增加营运资金会减少当年的现金流量cash flows</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320180950644.png" alt="In any given year:"></p>
+<h2 id="4-Alternative-investment-criteria"><a href="#4-Alternative-investment-criteria" class="headerlink" title="4. Alternative investment criteria"></a>4. Alternative investment criteria</h2><hr>
+<h3 id="Payback-period-criterion"><a href="#Payback-period-criterion" class="headerlink" title="Payback period criterion"></a>Payback period criterion</h3><p>“Payback period” = 收回初始成本的年数</p>
+<p>Minimum acceptance criterion：由管理层设定</p>
+<p>Ranking criterion：选择回报最快的项目</p>
+<p>优点：</p>
+<ul>
+<li>容易明白</li>
+<li>偏向流动性</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>忽略time value of money</li>
+<li>忽略了payback period之后的cash flows</li>
+<li>对长期项目有偏见</li>
+<li>需要arbitrary接受标准</li>
+<li>根据投资回收期标准接受的项目的NPV可能为负</li>
+</ul>
+<hr>
+<h3 id="IRR"><a href="#IRR" class="headerlink" title="IRR"></a>IRR</h3><p>Internal Rate of Return内部收益率</p>
+<p>The discount rate that sets NPV = 0</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320182341724.png" alt="IRR"></p>
+<p>Minimum acceptance criterion：如果内部收益率超过项目要求的回报率，则接受</p>
+<p>Ranking criterion：选择具有最高IRR的方案</p>
+<hr>
+<h3 id="Normalized-NPV"><a href="#Normalized-NPV" class="headerlink" title="Normalized NPV"></a>Normalized NPV</h3><p>Normalized NPV = NPV  \ initial investment</p>
+<p>Acceptance criterion：由管理层设定</p>
+<p>Ranking criterion:：选择N-NPV最高的项目</p>
+<p>缺点：忽略了项目之间的规模差距</p>
+<h1 id="Portfolio-Theory-投资组合理论"><a href="#Portfolio-Theory-投资组合理论" class="headerlink" title="Portfolio Theory 投资组合理论"></a>Portfolio Theory 投资组合理论</h1><p>• What is portfolio management?<br>• What is risk?<br>• Expected return and risk of a portfolio<br>• Benefits of diversification<br>• Optimal portfolio selection<br>– In what securities should I invest?<br>– Different investors have different risk tolerance: they invest in different portfolios</p>
+<h2 id="Risk"><a href="#Risk" class="headerlink" title="Risk"></a>Risk</h2><p>The measure we will use is the standard deviation of returns.</p>
+<p>Risk-return trade-off</p>
+<p>Risk premium 风险溢价：stocks收益率与国库券之间的差额是股票的风险溢价</p>
+<ul>
+<li>T-bills are essentially risk-free</li>
+<li>Stocks are risky: high volatility波动性，但有compensations补偿</li>
+</ul>
+<h2 id="Portfolio"><a href="#Portfolio" class="headerlink" title="Portfolio"></a>Portfolio</h2><p>Def：证券组合 securities</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320203031238.png" alt="Portfolio"></p>
+<p>我们需要计算portfolio中各种securities的组合比例，用价值来计算，而不是shares</p>
+<h2 id="Portfolio-return"><a href="#Portfolio-return" class="headerlink" title="Portfolio return"></a>Portfolio return</h2><p>回报率 $r_i$ 是从Capital Budgeting得出的</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200321075703734.png" alt="image-20200321075703734"></p>
+<p>D是security的股息dividends（分红之类的）</p>
+<p>对于一个投资组合来说，回报率 $r_p$ 等于各个成分的回报率的加权值</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200321075729945.png" alt="image-20200321075729945"></p>
+<h2 id="Short-sales"><a href="#Short-sales" class="headerlink" title="Short sales"></a>Short sales</h2><p>Def: Sell a security you don’t have</p>
+<p>Make money if the stock goes down</p>
+<ul>
+<li>在t = 0时，卖空者从其经纪人broker那里借入证券并将其出售</li>
+<li>在t = 1时，卖空者通过购买证券并将其退还给经纪人来平仓closes the short（此时股票价格下跌了，所以可以赚取差价）</li>
+<li>卖空者必须支付股票支付给经纪人的任何股息dividends（通常还有少量手续费）</li>
+</ul>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320215935099.png" alt="Short sales"></p>
+<p>portfolio中负的weight通常都是做空</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200321080720688.png" alt="例题"></p>
+<h2 id="Expected-portfolio-return"><a href="#Expected-portfolio-return" class="headerlink" title="Expected portfolio return"></a>Expected portfolio return</h2><p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320221549421.png" alt="expected return"></p>
+<p>投资组合的回报期望 = 各个成分投资回报期望的加权和</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200321080951305.png" alt="例子"></p>
+<p>先计算各个成分的期望，再计算组合期望</p>
+<h2 id="Variance-and-Standard-deviation-of-returns"><a href="#Variance-and-Standard-deviation-of-returns" class="headerlink" title="Variance and Standard deviation of returns"></a>Variance and Standard deviation of returns</h2><p>方差和标准差的一般计算公式：</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320222721626.png" alt="方差和标准差的一般计算公式"></p>
+<p>协方差计算：</p>
+<p>协方差是两个变量共同运动的量度，相关系数标度的协方差信息更丰富：</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200321081910055.png" alt="image-20200321081910055"></p>
+<p>归一化协方差：</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200321081926352.png" alt="image-20200321081926352"></p>
+<p>投资组合的方差：</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320222637186.png" alt="Variance of portfolio returns"></p>
+<p>例题1：</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200321082031022.png" alt="image-20200321082031022"></p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200321082055420.png" alt="image-20200321082055420"></p>
+<p>例题2：</p>
+<p>因为协方差为负数时可以减少portfolio的回报风险，我们应该选择风险更小的投资组合</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200321082350914.png" alt="答案：3"></p>
+<p>Diversification：</p>
+<p>It reduces risk</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200321083742844.png" alt="image-20200321083742844"></p>
+<p>如何最小化variance portfolio：</p>
+<p>计算投资组合的方差：</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200321084000813.png" alt="image-20200321084000813"></p>
+<p>Then differentiate w.r.t. to $w_A$:</p>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200321084029711.png" alt="image-20200321084029711"></p>
+<p>• 做空是可能的 (wA &lt; 0)<br>• With the exception of the special case where $\sigma_B = \sigma_A \rho_{AB}$ , the minimum variancep ortfolio never consists of investing in security B alone<br>• If $\rho_{AB} = −1$, the minimum variance portfolio built with risky securities A and B is risk-free. If $\rho_{AB} = 1$ and if short-sales are allowed, it is possible to construct a risk-free portfolio with securities A and B<br>• $\rho_{AB} =\pm1$ are interesting cases (but extremely unlikely)</p>
+<p>所以diversification可以减小的风险有局限：Total risk in a portfolio consists of (1) firm-specific (idiosyncratic) risk, and (2) market<br>(systemic) risk.</p>
+<ol>
+<li>Idiosyncratic risk comes from innovations, strikes, CEO-health, CEO misconduct, etc.,which are not correlated across companies——This risk is diversifiable!</li>
+<li>Systemic risk comes from the state of the economy, political stability, the taxation system, wars, etc., which are common to all firms（This results in positive correlation across company returns）——This risk is undiversifiable!</li>
+</ol>
+<p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200321084626356.png" alt="image-20200321084626356"></p>
+<h2 id="最优化投资组合Estimating-return-distributions"><a href="#最优化投资组合Estimating-return-distributions" class="headerlink" title="最优化投资组合Estimating return distributions"></a>最优化投资组合Estimating return distributions</h2><ol>
+<li><p>如何在给定风险水平下提供最高预期收益的意义上构建有效的投资组合？</p>
+</li>
+<li><p>如何在可供投资者使用的不同有效投资组合中进行选择？</p>
+</li>
+</ol>
+<p>下一步：</p>
+<ol>
+<li><p>定义所有可行投资组合的集合：给定一组证券，确定所有可能的预期收益和风险组合$E(r_P)$ ，$\sigma_P$可获得</p>
+</li>
+<li><p>在可行的投资组合中，确定每个风险等级$\sigma_P$具有最高$E(r_P)$ 的投资组合</p>
+</li>
+<li><p>使用投资者行为模型来选择最适合特定投资者的个人投资组合</p>
+</li>
+</ol>
+<h3 id="one-risk-free-asset-and-one-risky-asset"><a href="#one-risk-free-asset-and-one-risky-asset" class="headerlink" title="one risk-free asset and one risky asset"></a>one risk-free asset and one risky asset</h3>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>TSHOGX</span>
+                    </p>
+                
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2020</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2020/04/17/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/">统计学习理论</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© TSHOGX | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
