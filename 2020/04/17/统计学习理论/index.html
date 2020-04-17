@@ -253,9 +253,9 @@
 <h1 id="主成分分析"><a href="#主成分分析" class="headerlink" title="主成分分析"></a>主成分分析</h1><p>主成分分析（Principal Component Analysis，PCA）是一种在损失很少信息的前提下，把多个指标转化为几个综合指标的多元统计分析方法，它的核心是<strong>数据降维</strong>思想，即通过降维的手段实现多指标向综合指标的转化，而转化后的综合指标，我们称之为主成分。</p>
 <p>其中，每个主成分都是众多原始变量的线性组合，且每个主成分之间互不相关，这使得主成分比原始变量具有某些更为优越的性能。在实际应用中，如果原始数据集本身较为复杂，那么使用主成分分析可以使我们仅需要考虑几个综合指标，而且又不至于损失太多信息。一方面，它更容易帮助我们抓住问题的主要矛盾；另一方面，它又极大的提高了我们的分析效率。</p>
 <p>假设我们对某一事物的研究涉及到P个指标，分别用$x_1,x_2,…,x_p$表示，那么n个样本的数据矩阵为：</p>
-<p><img src="https://pic2.zhimg.com/80/v2-b3725f2047ca72920ae044775917f9a9_1440w.jpg" alt="img"></p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-b3725f2047ca72920ae044775917f9a9_1440w.jpg" alt="img"></p>
 <p>接着，我们对x进行线性变换，形成p个新的综合变量，即新的综合变量可以由原始变量线性表示，即：</p>
-<p><img src="https://pic2.zhimg.com/80/v2-5a25e7261ddc1d72d221864909bd6e31_1440w.jpg" alt="img"></p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-5a25e7261ddc1d72d221864909bd6e31_1440w.jpg" alt="img"></p>
 <p>模型需要满足以下条件：</p>
 <ol>
 <li>$F_i, F_j$之间互不相关</li>
@@ -278,13 +278,13 @@
 <h2 id="逐步回归"><a href="#逐步回归" class="headerlink" title="逐步回归"></a>逐步回归</h2><p>Stepwise Regression：自变量的选择是在一个自动的过程中完成的</p>
 <h2 id="岭回归"><a href="#岭回归" class="headerlink" title="岭回归"></a>岭回归</h2><p>Ridge Regression：通过收缩参数λ（lambda）解决多重共线性问题（自变量高度相关）。岭回归通过给回归估计上增加一个偏差度，来降低标准误差。</p>
 <p>除常数项以外，这种回归的假设与最小二乘回归类似；它收缩了相关系数的值，但没有达到零，这表明它没有特征选择功能，这是一个正则化方法，并且使用的是L2正则化。</p>
-<p><img src="https://pic3.zhimg.com/80/v2-8b082ec95854efa3bb66dcbbd9be5c36_1440w.jpg" alt="img"></p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-8b082ec95854efa3bb66dcbbd9be5c36_1440w.jpg" alt="img"></p>
 <p>在这个公式中，有两个组成部分。第一个是最小二乘项，另一个是β2（β-平方）的λ倍，其中β是相关系数。</p>
 <h2 id="套索回归"><a href="#套索回归" class="headerlink" title="套索回归"></a>套索回归</h2><p>Lasso Regression：也会惩罚回归系数的绝对值大小。此外，它能够减少变化程度并提高线性回归模型的精度。</p>
-<p><img src="https://pic1.zhimg.com/80/v2-c60d9285b983bf247f3dae519e757794_1440w.jpg" alt="img"></p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-c60d9285b983bf247f3dae519e757794_1440w.jpg" alt="img"></p>
 <p>Lasso （Least Absolute Shrinkage and Selection Operator）</p>
 <h2 id="ElasticNet"><a href="#ElasticNet" class="headerlink" title="ElasticNet"></a>ElasticNet</h2><p>Lasso和Ridge回归技术的混合体。它使用L1来训练并且L2优先作为正则化矩阵。当有多个相关的特征时，ElasticNet是很有用的。Lasso 会随机挑选他们其中的一个，而ElasticNet则会选择两个。</p>
-<p><img src="https://pic2.zhimg.com/80/v2-246720018f1a105b08f4501950dd362d_1440w.jpg" alt="img"></p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-246720018f1a105b08f4501950dd362d_1440w.jpg" alt="img"></p>
 <p>Lasso和Ridge之间的实际的优点是，它允许ElasticNet继承循环状态下Ridge的一些稳定性。</p>
 <p><a href="https://zhuanlan.zhihu.com/p/58714364" target="_blank" rel="noopener">参考</a></p>
 <h1 id="维数灾难"><a href="#维数灾难" class="headerlink" title="维数灾难"></a>维数灾难</h1><p>维数增多带来的高维空间数据稀疏化问题：</p>
@@ -297,19 +297,19 @@
 <p>训练数据集的损失与测试数据集的损失之间的差异就叫做泛化误差（generalization error）。</p>
 <p>泛化误差可以分解为：</p>
 <p><strong>方差（Variance）</strong>：使用样本数相同的不同训练集产生的方差，即不同的训练数据集训练出的模型输出值之间的差异。</p>
-<p><img src="https://pic2.zhimg.com/80/v2-2a7a3d2a6ec09d77b1171eeee65c8ad5_1440w.jpg" alt="img"></p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-2a7a3d2a6ec09d77b1171eeee65c8ad5_1440w.jpg" alt="img"></p>
 <p>度量了同样大小的训练集的变动，所导致的学习性能的变化，即刻画了数据扰动所造成的影响。</p>
 <p><strong>偏差（Biase）</strong>：期望输出与真实标记的差别，即用所有可能的训练数据集训练出的所有模型的输出的平均值与真实模型的输出值之间的差异。</p>
-<p><img src="https://pic4.zhimg.com/80/v2-295fb8547dbfcf04cc6127ffb51b9e57_1440w.jpg" alt="img"></p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-295fb8547dbfcf04cc6127ffb51b9e57_1440w.jpg" alt="img"></p>
 <p>度量了学习算法的期望预测与真实结果的偏离程度，即刻画了学习算法本身的拟合能力。</p>
 <p><strong>噪声（Noise）</strong>：是数据集本身所致，学习算法无法解决的误差，数据的质量决定了学习的上限，在给定数据集的情况下，我们希望接近这个上线。</p>
-<p><img src="https://pic4.zhimg.com/80/v2-b55afb6e8136fae9055e8ba7a6f12ba7_1440w.jpg" alt="img"></p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-b55afb6e8136fae9055e8ba7a6f12ba7_1440w.jpg" alt="img"></p>
 <p>表达了在当前任务上任何学习算法所能达到的期望泛化误差的下界，即刻画了学习问题本身的难度。</p>
 <p>偏差度量的是单个模型的学习能力，而方差度量的是同一个模型在不同数据集上的稳定性。</p>
 <p><strong>分解过程</strong>（假定噪声期望为零）：</p>
-<p><img src="https://pic1.zhimg.com/80/v2-0751754b1ace1d4741e474d4d1abe51c_1440w.jpg" alt="img"></p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-0751754b1ace1d4741e474d4d1abe51c_1440w.jpg" alt="img"></p>
 <p>于是，最终得到：</p>
-<p><img src="https://pic3.zhimg.com/80/v2-69a3c3949b21f1c016dbb01780ebdeca_1440w.jpg" alt="img"></p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-69a3c3949b21f1c016dbb01780ebdeca_1440w.jpg" alt="img"></p>
 <p>泛化性能是由学习算法的能力、数据的充分性以及学习任务本身的难度所共同决定的。给定学习任务，为了取得好的泛化性能，则需使偏差较小，即能够充分拟合数据，并且使方差较小，即使得数据扰动产生的影响小。</p>
 <p><a href="https://zhuanlan.zhihu.com/p/38853908" target="_blank" rel="noopener">参考</a></p>
 <h1 id="核方法"><a href="#核方法" class="headerlink" title="核方法"></a>核方法</h1><p><a href="https://zhuanlan.zhihu.com/p/61123737" target="_blank" rel="noopener">SVM</a></p>
