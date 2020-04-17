@@ -14,7 +14,7 @@
 
 
 
-<title>《神经病学》 | -TSHOGX-</title>
+<title>医学&amp;心理学 | -TSHOGX-</title>
 
 
 
@@ -109,11 +109,73 @@
             <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">《神经病学》</h1>
+            <h1 class="post-title">医学&amp;心理学</h1>
             
                 <div class="post-meta">
                     
@@ -129,7 +191,7 @@
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/%E5%BF%83%E7%90%86%E5%AD%A6/">心理学</a>
+                                <a href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>
                             
                         </span>
                     
@@ -138,7 +200,7 @@
         </header>
 
         <div class="post-content">
-            <p>神经病学是神经科学的一门临床分支。神经病学和精神病学是两个不同的学科。神经系统疾病表现为运动、感觉和反射障碍；精神疾病主要是由于大脑高级皮质功能紊乱导致的精神活动障碍。神经系统疾病中，如果病变累及大脑，也有精神症状。</p>
+            <h1 id="《神经病学》"><a href="#《神经病学》" class="headerlink" title="《神经病学》"></a>《神经病学》</h1><p>神经病学是神经科学的一门临床分支。神经病学和精神病学是两个不同的学科。神经系统疾病表现为运动、感觉和反射障碍；精神疾病主要是由于大脑高级皮质功能紊乱导致的精神活动障碍。神经系统疾病中，如果病变累及大脑，也有精神症状。</p>
 <p>记忆减退：血管性痴呆、代谢性脑病等（75）</p>
 <p>头痛部位、发病快慢与疾病的关系表格（81）</p>
 <p>躯体感觉障碍：抑制性感觉减退、刺激性疼痛等（90）</p>
@@ -156,6 +218,10 @@
 </ul>
 </li>
 </ul>
+<h1 id="周期"><a href="#周期" class="headerlink" title="周期"></a>周期</h1><p>经期：在脑垂体激素的调控下，卵巢中雌激素和孕激素的分泌量下降，子宫内膜供血小动脉发生痉挛收缩，然后破裂；皮肤一般会变好</p>
+<p>卵泡期：高水平的雌激素使子宫内膜的增生，有利于受精卵的着床。饮水量激增，心情变好，精力充足（16-</p>
+<p>排卵期：</p>
+<p>黄体期：皮肤出油长痘，头痛，食欲变化，体重变化，心情贼差，需要大量睡眠</p>
 
         </div>
 
