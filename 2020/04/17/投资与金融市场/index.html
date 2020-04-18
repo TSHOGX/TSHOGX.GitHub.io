@@ -42,6 +42,45 @@
     
     
         
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+        
     
 
 
@@ -200,20 +239,21 @@
         </header>
 
         <div class="post-content">
-            <p>公司需要在很多Investment opportunities中选择最好的一个</p>
+            <h1 id="Lecture-1"><a href="#Lecture-1" class="headerlink" title="Lecture 1"></a>Lecture 1</h1><p>公司需要在很多Investment opportunities中选择最好的一个</p>
 <p>就需要evaluate projects的价值，进行Capital budgeting（资本预算）</p>
 <ul>
-<li>统一时间，比较不同时间的资金流动（cash flows）—— time value of money</li>
-<li>评估项目价值 —— The Net Present Value rule（NPV）</li>
+<li>统一时间，比较不同时间的资金流（cash flows）—— time value of money</li>
+<li>评估项目价值的准则：The Net Present Value rule（NPV）</li>
 <li>其他评估法则</li>
 </ul>
 <h2 id="1-Time-value-of-money"><a href="#1-Time-value-of-money" class="headerlink" title="1. Time value of money"></a>1. Time value of money</h2><p>同等大小资金，今日的总优于未来的：未来有Uncertainty、Inflation通货膨胀、Opportunity cost</p>
-<p>compounding：复利</p>
-<h3 id="Future-Value"><a href="#Future-Value" class="headerlink" title="Future Value"></a>Future Value</h3><p>If you invest S units for T years at an interest rate r, you will get the future value</p>
+<p>复利（compounding）：本利共同作为下一期的投入</p>
+<h3 id="Future-Value"><a href="#Future-Value" class="headerlink" title="Future Value"></a>Future Value</h3><p>在复利的基础上，估算今日资金流的未来价值</p>
+<p>If you invest S units for T years at an interest rate r, you will get the future value</p>
 <p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320134839827.png" alt="FV definition"></p>
 <ul>
-<li>年利率 annual rate, annual nominal interest</li>
-<li>实际利率 Effective annual rate(EAR)：如果年利率是 $r_a$，每年复利 $k$ 次，每期利率r/k，每年实际利率为 $EAR=(1+r_a/k)^k - 1$ <ul>
+<li>年利率 Annual rate, annual nominal interest</li>
+<li>实际年利率 Effective annual rate(<strong>EAR</strong>)：如果年利率是 $r_a$，每年复利 $k$ 次，每期利率r/k，每年实际利率为 $EAR=(1+r_a/k)^k - 1$ <ul>
 <li>复利次数k越多，EAR越大</li>
 <li>continuous compounding: 当k趋向于∞，EAR趋向于 $e^r − 1$ </li>
 </ul>
@@ -225,21 +265,19 @@
 <li>Plus a premium for risk</li>
 </ul>
 <p><strong>Nominal vs. Real interest rates</strong></p>
-<ul>
-<li>通货膨胀侵蚀购买力 Inflation erodes purchasing power</li>
-<li>Precisely, real rate $\approx r- \pi$ </li>
-</ul>
-<h3 id="Present-value-and-Discounting"><a href="#Present-value-and-Discounting" class="headerlink" title="Present value and Discounting"></a>Present value and Discounting</h3><p>Present Value：年利率为r的情况下，T年后若想要拿到S，今天需要投资PV</p>
+<p>通货膨胀侵蚀购买力（Inflation erodes purchasing power），所以，真实利率 $\approx r- \pi$ </p>
+<h3 id="Present-value-and-Discounting"><a href="#Present-value-and-Discounting" class="headerlink" title="Present value and Discounting"></a>Present value and Discounting</h3><p>依然在复利的基础上，估算未来资金流的现在价值</p>
+<p>Present Value：贴现率为r的情况下，T年后若想要拿到S，今天需要投资PV</p>
 <p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320142107682.png" alt="Present Value"></p>
-<p>discounting：贴现 discount rate</p>
+<p>discounting：贴现 discount rate，就是复利时利率的反面说法</p>
 <p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320142239389.png" alt="例题"></p>
-<p>注意：年利率r可以直接除365来获得日利率（默认复利）</p>
+<p>注意：年利率r可以直接除365来获得日利率（<strong>默认复利</strong>）</p>
 <ul>
 <li>PV反比于 r 和 T ：利率越高，时间越长，两个时间的价值变化越大。</li>
 <li>今日收获PV = t时刻收获S</li>
 <li>为了比较未来不同时间点的cash flow，我们需要比较他们的PV</li>
 </ul>
-<h2 id="2-Multiple-cash-flows"><a href="#2-Multiple-cash-flows" class="headerlink" title="2. Multiple cash flows"></a>2. Multiple cash flows</h2><p>在不同时间点有不同的资金流动（同方向），那么折算为今日的资金流通（同方向）时有独立性</p>
+<h2 id="2-Multiple-Cash-Flows"><a href="#2-Multiple-Cash-Flows" class="headerlink" title="2. Multiple Cash Flows"></a>2. Multiple Cash Flows</h2><p>在不同时间点有不同的资金流动（同方向），那么折算为今日的资金流（同方向）时有独立性</p>
 <p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320142926506.png" alt="Multiple cash flows"></p>
 <p>此时每个时间段都是包含本金的</p>
 <h3 id="永续年金-Perpetuities"><a href="#永续年金-Perpetuities" class="headerlink" title="永续年金 Perpetuities"></a>永续年金 Perpetuities</h3><p>因为这是一个无穷的constant cash flow，所以今日投资后未来就不能拿出本金，而是每期取出该期生成的利息</p>
@@ -252,23 +290,22 @@
 <h3 id="增长年金-Growing-perpetuities"><a href="#增长年金-Growing-perpetuities" class="headerlink" title="增长年金 Growing perpetuities"></a>增长年金 Growing perpetuities</h3><p>同样是无穷的cash flow，每期要求按照 g 增长，相当于每期的利率 r 减少了 g</p>
 <p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320143927352.png" alt="Growing perpetuities"></p>
 <h3 id="普通年金-Annuity-ordinary-annuity"><a href="#普通年金-Annuity-ordinary-annuity" class="headerlink" title="普通年金 Annuity (ordinary annuity)"></a>普通年金 Annuity (ordinary annuity)</h3><p>普通年金是指从第一期起，在一定时期内每期期末等额收付的系列款项，又称为后付年金。</p>
-<p>PV：每期都流动C，相当于一开始一次性流动PV——</p>
+<p>普通年金的PV：每期都流动C，相当于一开始一次性流动PV：</p>
 <p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320150531390.png" alt="Annuity"><br>$$<br>A(C,r,T)=C(\frac{1}{(1+r)^1}+\frac{1}{(1+r)^2}+…+\frac{1}{(1+r)^T})<br>$$</p>
 <blockquote>
 <p><strong>例：</strong>现在存入一笔钱，准备在以后5年中每年末得到100元，如果利息率为10%，现在应存入多少钱?　</p>
 </blockquote>
-<p>FV：每期都流动A，相当于最终一次性流动——</p>
+<p>普通年金的FV：每期都流动A，相当于最终一次性流动（补充）</p>
 <p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320151134404.png" alt="image-20200320151134404"></p>
 <blockquote>
 <p><strong>例：</strong>5年中每年年底存入银行100元，存款利率为8%，求第5年末年金终值为多少。　</p>
 </blockquote>
-<h2 id="3-Capital-budgeting"><a href="#3-Capital-budgeting" class="headerlink" title="3. Capital budgeting"></a>3. Capital budgeting</h2><p>衡量是否应该invest $I_0$ in a project that yields cash flows $[C0,C1,C2, . . .]$ in the future</p>
+<h2 id="3-Capital-budgeting"><a href="#3-Capital-budgeting" class="headerlink" title="3. Capital budgeting"></a>3. Capital budgeting</h2><p>目标：衡量是否应该invest $I_0$ in a project that yields cash flows $[C0,C1,C2, . . .]$ in the future</p>
 <p>NPV：一个项目的PV和future cash flows + initial investment的差距</p>
 <p><img src="%E6%8A%95%E8%B5%84%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA/image-20200320154432711.png" alt="NPV"></p>
 <ul>
 <li>NPV为正时接受项目</li>
-<li>选择最大的NPV</li>
-<li>当公司选择投资positive-NPV project，公司价值(and hence shareholder value)增长NPV</li>
+<li>选择最大的NPV：当公司选择投资positive-NPV project，公司价值(and hence shareholder value)增长NPV</li>
 </ul>
 <h3 id="如何选择discount-rate——OCC"><a href="#如何选择discount-rate——OCC" class="headerlink" title="如何选择discount rate——OCC"></a>如何选择discount rate——OCC</h3><p>一般来说，NPV将随着r的增加而降低</p>
 <p>合适的r是公司在保持风险不变的情况下从其他地方的替代投资（例如，债券市场）获得的收益率</p>
@@ -404,7 +441,7 @@
 <li><p>使用投资者行为模型来选择最适合特定投资者的个人投资组合</p>
 </li>
 </ol>
-<h3 id="one-risk-free-asset-and-one-risky-asset"><a href="#one-risk-free-asset-and-one-risky-asset" class="headerlink" title="one risk-free asset and one risky asset"></a>one risk-free asset and one risky asset</h3>
+<h3 id="one-risk-free-asset-and-one-risky-asset"><a href="#one-risk-free-asset-and-one-risky-asset" class="headerlink" title="one risk-free asset and one risky asset"></a>one risk-free asset and one risky asset</h3><h1 id="Lecture-6"><a href="#Lecture-6" class="headerlink" title="Lecture 6"></a>Lecture 6</h1>
         </div>
 
         
