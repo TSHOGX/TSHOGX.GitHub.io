@@ -313,7 +313,31 @@
 <p>泛化性能是由学习算法的能力、数据的充分性以及学习任务本身的难度所共同决定的。给定学习任务，为了取得好的泛化性能，则需使偏差较小，即能够充分拟合数据，并且使方差较小，即使得数据扰动产生的影响小。</p>
 <p><a href="https://zhuanlan.zhihu.com/p/38853908" target="_blank" rel="noopener">参考</a></p>
 <h1 id="核方法"><a href="#核方法" class="headerlink" title="核方法"></a>核方法</h1><p><a href="https://zhuanlan.zhihu.com/p/61123737" target="_blank" rel="noopener">SVM</a></p>
-
+<h1 id="概率估计"><a href="#概率估计" class="headerlink" title="概率估计"></a>概率估计</h1><p>我们可以通过求解概率函数$P(Y|X)$来估计$f:X\to Y$，若已知所有 RV 的 joint distribution，很容易可以算出概率函数的数值解，但是通常情况需要的样本太大，只能通过其他方法来估计$f:X\to Y$ </p>
+<ol>
+<li>be smart about how we estimate probability parameters from available data: MLE, MAP</li>
+<li>be smart about how we represent joint probability distributions: Naïve Bayes, Bayes Nets</li>
+</ol>
+<h2 id="MLE"><a href="#MLE" class="headerlink" title="MLE"></a>MLE</h2><p>Maximum Likelihood Estimation</p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/image-20200419161827133.png" alt="MLE"></p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/image-20200419162041583.png" alt="MLE2"></p>
+<p>通常用$\ell (\theta)$表示$lnP(D|\theta)$，用$L(\theta)$表示似然函数$P(D|\theta)$ </p>
+<p>逐点最小化：</p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/image-20200419162526934.png" alt="image-20200419162526934"></p>
+<p>可得到所需参数$\theta$ </p>
+<h2 id="MAP"><a href="#MAP" class="headerlink" title="MAP"></a>MAP</h2><p>Maximum a Posteriori Probability Estimation</p>
+<p>这是贝叶斯的方法，通过最大化后验概率，来使得参数估计可以容纳先验假设$P(\theta)$，其余和MLE相同</p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/image-20200419162750421.png" alt="image-20200419162750421"></p>
+<p>$P(\theta)$与$\theta$无关，只起到归一化作用，所以一般忽略为：</p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/image-20200419162923462.png" alt="image-20200419162923462"></p>
+<p>其中先验概率未知，其他都可以表示，一种对贝叶斯估计的批判就是人们通常为了简化计算选择先验概率，此处我们可以选择Beta distribution：</p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/image-20200419163110416.png" alt="image-20200419163110416"></p>
+<p>（参考ML version2 chapter2 Estimating Probabilities）</p>
+<p>用这两种方法估计伯努利分布</p>
+<h2 id="Naive-Bayes"><a href="#Naive-Bayes" class="headerlink" title="Naïve Bayes"></a>Naïve Bayes</h2><h2 id="Bayes-Nets"><a href="#Bayes-Nets" class="headerlink" title="Bayes Nets"></a>Bayes Nets</h2><h1 id="学习理论"><a href="#学习理论" class="headerlink" title="学习理论"></a>学习理论</h1><p>Computational Learning Theory</p>
+<p>（参考 ML 7.1-7.4；林轩田MLF）</p>
+<p>是一个“可计算与复杂度理论”和“机器学习”的交叉学科，可以看做是用算法分析的套路来分析机器学习模型和问题。用概率和组合数学的方法在某某限制下证明某某的上下限分别是多少</p>
+<h2 id="PAC-Learning"><a href="#PAC-Learning" class="headerlink" title="PAC Learning"></a>PAC Learning</h2><h2 id="VC-dimension"><a href="#VC-dimension" class="headerlink" title="VC-dimension"></a>VC-dimension</h2>
         </div>
 
         
