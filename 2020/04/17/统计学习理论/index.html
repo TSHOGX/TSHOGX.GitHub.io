@@ -345,7 +345,7 @@
 <p>Conditional Independence：$P(X|Y,Z)=P(X|Z)$</p>
 <p>Marginal Independence：$P(X,Y)=P(X)P(Y)$</p>
 <p>BN包括 DAG($G=&lt;V,E&gt;$) 和 CPD/CPT( $P(X_i|Pa(X_i))$ )</p>
-<p>![Screen Shot 2020-04-27 at 5.19.14 PM](统计学习理论/Screen Shot 2020-04-27 at 5.19.14 PM.png)</p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/BNdef.png" alt="Screen Shot 2020-04-27 at 5.19.14 PM"></p>
 <p>相对于Naive Bayes的链式法则的展开，BN更加灵活的表示了条件独立关系，可以表示集合之间的独立关系，并且大大减少了独立参数的个数，从指数级降到了线性</p>
 <p>Terminology:</p>
 <ul>
@@ -374,14 +374,14 @@
 <li>H-T和T-T：观测到C时，A与B之间通道阻塞，A与B独立；为观测到C时，A与B可通过C建立某种联系，A与B无marginal independent（$A \models B |C$ &amp; $A \not\models B$  ）</li>
 <li>H-H：观测到C时，A与B反而受到联系，不再独立；否则是marginal independent的（$A \not\models B |C$ &amp; $A \models B$  ）——explaining away</li>
 </ul>
-<p>![Screen Shot 2020-04-28 at 11.09.57 AM](统计学习理论/Screen Shot 2020-04-28 at 11.09.57 AM.png)</p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/ds.png" alt="Screen Shot 2020-04-28 at 11.09.57 AM"></p>
 <h3 id="Markov-Blanket"><a href="#Markov-Blanket" class="headerlink" title="Markov Blanket"></a>Markov Blanket</h3><p>概率图中，为了使其中一个节点和其它节点条件独立，我们用毯子盖住这个节点周围与其相关的节点，那么毯子外面的节点和这个节点就条件独立了。</p>
-<p>![Screen Shot 2020-04-28 at 11.11.58 AM](统计学习理论/Screen Shot 2020-04-28 at 11.11.58 AM.png)</p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/MB.png" alt="Screen Shot 2020-04-28 at 11.11.58 AM"></p>
 <p>马尔科夫链就是一串节点，其中每个节点的状态只与其父节点的状态相关。</p>
 <p>马尔科夫毯和马尔科夫链的关系就是都满足马尔科夫性质。</p>
 <p>##Bayes Network for a Hidden Markov Model</p>
 <p>HMM是针对时序分析的一种方法time series，RNN也是针对时序分析的（需要更多数据，分类精度更高）</p>
-<p>![Screen Shot 2020-04-28 at 7.43.37 AM](统计学习理论/Screen Shot 2020-04-28 at 7.43.37 AM.png)</p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/HMM.png" alt="Screen Shot 2020-04-28 at 7.43.37 AM"></p>
 <h1 id="学习理论"><a href="#学习理论" class="headerlink" title="学习理论"></a>学习理论</h1><p>Computational Learning Theory</p>
 <p>（参考 ML 7.1-7.4；林轩田MLF）</p>
 <p>是一个“可计算与复杂度理论”和“机器学习”的交叉学科，可以看做是用算法分析的套路来分析机器学习模型和问题。用概率和组合数学的方法在某某限制下证明某某的上下限分别是多少</p>
