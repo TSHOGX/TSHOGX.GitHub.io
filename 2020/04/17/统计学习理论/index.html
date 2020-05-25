@@ -239,7 +239,17 @@
         </header>
 
         <div class="post-content">
-            <h1 id="判别分析"><a href="#判别分析" class="headerlink" title="判别分析"></a>判别分析</h1><p>判别分析<strong>（discriminant analysis）</strong>是多元统计分析中较为成熟的一种分类方法，它的核心思想是<strong>“分类与判断”</strong>。</p>
+            <p>更新时间：5.25 Dell</p>
+<p>统计学习是基于数据构建统计模型而对数据预测分析，包括 supervised、unsupervised、semi-supervised、reinforcement 等</p>
+<p>对于supervised来说，我们希望找到 input space 到 output space 的映射，所有这样的映射/模型构成的集合就是 hypothesis space，即我们的学习范围</p>
+<p>模型可以是决策函数 $Y=f(X)$ 或者概率函数 $P(y|x)$，不论哪种模型，X和Y都具有联合概率分布$P(X,Y)$，这是监督学习关于数据的基本假设，因此可以利用统计的方法学习</p>
+<p>统计学习方法：<br>perception 25-36 ✔️<br>knn 37-45 ✔️<br>naive bayes 47-53 ✔️<br>决策树 55-75<br>logistics回归 最大熵模型 77-94<br>svm 95-134 ✔️<br>boosting 137-153 ✔️<br>em 155-170 ✔️<br>hmm 171-189 ✔️<br>conditional random field 191-210 ✔️</p>
+<p>机器学习 周：<br>线形模型 ✔️<br>决策树 ✔️<br>神经网络 ✔️<br>svm ✔️<br>贝叶斯分类 ✔️<br>集成学习 ✔️<br>聚类 ✔️<br>降维与度量学习 ✔️<br>特征选择与稀疏学习<br>计算学习理论 ✔️<br>半监督学习 ✔️<br>概率图模型 ✔️<br>规则学习<br>强化学习 ✔️</p>
+<ul>
+<li><strong>判别模型</strong> discriminative model：直接学习 $P(Y|X)$ or $f(X)$ 。回归，knn，SVM, 条件随机场，boosting，决策树，感知机等。优点：直接面对预测时，往往正确率更高；直接学习模型，简化学习问题</li>
+<li><strong>生成模型</strong> generative model：对 $P(x,y)$ 建模，生成每个label的最优概率，$P(Y|X) = \frac{P(X,Y)}{P(X)}$。朴素贝叶斯, HMM等。优点：解释性好，可以还原出联合概率分布；存在隐变量也行；学习时收敛速度更快</li>
+</ul>
+<h1 id="判别分析"><a href="#判别分析" class="headerlink" title="判别分析"></a>判别分析</h1><p>判别分析<strong>（discriminant analysis）</strong>是多元统计分析中较为成熟的一种分类方法，它的核心思想是<strong>“分类与判断”</strong>。</p>
 <h2 id="距离判别基本理论"><a href="#距离判别基本理论" class="headerlink" title="距离判别基本理论"></a>距离判别基本理论</h2><p>假设存在两个总体$G_1$和$G_2$，另有$x$为一个$p$维的样本值，计算得到该样本到两个总体的距离$d(x,G_1)$和$d(x,G_2)$，如果$d(x,G_1)$大于$d(x,G_2)$，则认为样本$x$属于总体$G_2$，反之亦然；若两者相等，则该样本待判。所以，最核心的问题在于距离的计算。</p>
 <ul>
 <li>欧式距离：在计算多个总体之间的距离时并不考虑方差的影响</li>
@@ -250,7 +260,57 @@
 <h2 id="Fisher判别基本理论"><a href="#Fisher判别基本理论" class="headerlink" title="Fisher判别基本理论"></a>Fisher判别基本理论</h2><p>Fisher判别法的基本思想是“投影”，将$K$组$P$维的数据向低维空间投影，使其投影的组与组之间的方差尽可能的大，组内的方差尽可能的小。因此，Fisher判别法的重点就是选择适当的“投影轴”。判别函数为就是那个轴。</p>
 <p>非线性判别：在判别分析的实际应用中，对复杂的数据使用线性判别可能无法得到理想的效果。为此，我们需要使用类似于二次判别函数的非线性分类方法，将样本点投影到若干种二次曲面中，实现理想的判别效果。</p>
 <p><a href="https://zhuanlan.zhihu.com/The-Art-of-Data" target="_blank" rel="noopener">参考</a></p>
-<h1 id="主成分分析"><a href="#主成分分析" class="headerlink" title="主成分分析"></a>主成分分析</h1><p>主成分分析（Principal Component Analysis，PCA）是一种在损失很少信息的前提下，把多个指标转化为几个综合指标的多元统计分析方法，它的核心是<strong>数据降维</strong>思想，即通过降维的手段实现多指标向综合指标的转化，而转化后的综合指标，我们称之为主成分。</p>
+<h2 id="回归分析"><a href="#回归分析" class="headerlink" title="回归分析"></a>回归分析</h2><p>回归分析是一种<strong>预测</strong>性的建模技术，它估计了因变量和自变量之间的关系（影响强度和具体关系）。这种技术通常用于预测分析，时间序列模型以及发现变量之间的<strong>因果</strong>关系。</p>
+<p>根据<strong>自变量的个数，因变量的类型以及回归线的形状</strong>的不同，有不同回归方法。</p>
+<p>在各自类型之下，需要通过最小化损失函数（误差函数）来确定具体的参数值。</p>
+<p>常见的回归方程有：</p>
+<h3 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h3><p>Linear Regression：因变量是连续的，自变量可以是连续的也可以是离散的，回归线的性质是线性的。</p>
+<p>损失函数 – 最小二乘法：最小化每个数据点到线的垂直偏差平方和来计算最佳拟合线</p>
+<h3 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h3><p>Logistic Regression：因变量的类型属于二元变量</p>
+<p>损失函数 – 极大似然估计</p>
+<p>需要大的样本量</p>
+<h3 id="逐步回归"><a href="#逐步回归" class="headerlink" title="逐步回归"></a>逐步回归</h3><p>Stepwise Regression：自变量的选择是在一个自动的过程中完成的</p>
+<h3 id="岭回归"><a href="#岭回归" class="headerlink" title="岭回归"></a>岭回归</h3><p>Ridge Regression：通过收缩参数λ（lambda）解决多重共线性问题（自变量高度相关）。岭回归通过给回归估计上增加一个偏差度，来降低标准误差。</p>
+<p>除常数项以外，这种回归的假设与最小二乘回归类似；它收缩了相关系数的值，但没有达到零，这表明它没有特征选择功能，这是一个正则化方法，并且使用的是L2正则化。</p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-8b082ec95854efa3bb66dcbbd9be5c36_1440w.jpg" alt="img"></p>
+<p>在这个公式中，有两个组成部分。第一个是最小二乘项，另一个是β2（β-平方）的λ倍，其中β是相关系数。</p>
+<h3 id="套索回归"><a href="#套索回归" class="headerlink" title="套索回归"></a>套索回归</h3><p>Lasso Regression：也会惩罚回归系数的绝对值大小。此外，它能够减少变化程度并提高线性回归模型的精度。</p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-c60d9285b983bf247f3dae519e757794_1440w.jpg" alt="img"></p>
+<p>Lasso （Least Absolute Shrinkage and Selection Operator）</p>
+<h3 id="ElasticNet"><a href="#ElasticNet" class="headerlink" title="ElasticNet"></a>ElasticNet</h3><p>Lasso和Ridge回归技术的混合体。它使用L1来训练并且L2优先作为正则化矩阵。当有多个相关的特征时，ElasticNet是很有用的。Lasso 会随机挑选他们其中的一个，而ElasticNet则会选择两个。</p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-246720018f1a105b08f4501950dd362d_1440w.jpg" alt="img"></p>
+<p>Lasso和Ridge之间的实际的优点是，它允许ElasticNet继承循环状态下Ridge的一些稳定性。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/58714364" target="_blank" rel="noopener">参考</a></p>
+<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="Least-Square-amp-KNN"><a href="#Least-Square-amp-KNN" class="headerlink" title="Least Square &amp; KNN"></a>Least Square &amp; KNN</h2><table>
+<thead>
+<tr>
+<th>Least squares</th>
+<th>𝒌-nearest neighbors</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$p$ parameters   ($p$ = #variables)</td>
+<td>$\frac N k$ parameters   ($k$: hyperparameter) ($N$ = #observations)</td>
+</tr>
+<tr>
+<td>Low variance (robust)</td>
+<td>High variance (not robust)</td>
+</tr>
+<tr>
+<td>High bias (strong assumption)</td>
+<td>Low bias (mild assumption)</td>
+</tr>
+<tr>
+<td>Good for Scenario 1: Training data in each class generated from a two-dimensional Gaussian, the two Gaussians are independent and have different means.</td>
+<td>Good for Scenario 2: Training data in each class generated from a mixture of 10 low-variance Gaussians, with means again distributed as Gaussian.</td>
+</tr>
+</tbody></table>
+<h2 id="Loss-function"><a href="#Loss-function" class="headerlink" title="Loss function"></a>Loss function</h2><p>Squared error loss 平方损失函数:<br>$$<br>L(Y,f(x)) = (Y-f(x))^2.<br>$$<br>Expected prediction error (EPE)：期望预测误差，在X和Y的全概率空间上对损失函数求期望，最小化EPE可以得到最小的损失，即f(X)最优解。</p>
+<p>使用平方损失函数时，EPE为：<br>$$<br>\begin{equation}<br>\begin{aligned}<br>EPE(f) &amp;= E(Y-f(X))^2 \<br>&amp;= \int(y-f(x))^2\Pr(dx,dy) \<br>&amp;=E_XE_{Y|X}([Y-f(X)]^2|X)<br>\end{aligned}<br>\end{equation}<br>$$<br>需要寻找 Regression function: $f(x) = E(Y|X=x)$ （判别模型）</p>
+<p>minimize EPE pointwise 得到： $f(x) = \arg\min_c E_{Y|X}([Y-c]^2|X=x)$ </p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/image-20200525084306848.png" alt="image-20200525084306848"></p>
+<p>对于KNN来说，它直接希望用局部的样本数据的平均来近似期望：<br>$$<br>\hat{f}(x)={\rm Ave}(y_i|x_i \in N_k(x))<br>$$<br>As $N,k \to \infin $ and $\frac k N \to 0$, we have $\hat{f}(x)={\rm E}(Y|X=x)$ .</p>
+<h2 id="主成分分析"><a href="#主成分分析" class="headerlink" title="主成分分析"></a>主成分分析</h2><p>主成分分析（Principal Component Analysis，PCA）是一种在损失很少信息的前提下，把多个指标转化为几个综合指标的多元统计分析方法，它的核心是<strong>数据降维</strong>思想，即通过降维的手段实现多指标向综合指标的转化，而转化后的综合指标，我们称之为主成分。</p>
 <p>其中，每个主成分都是众多原始变量的线性组合，且每个主成分之间互不相关，这使得主成分比原始变量具有某些更为优越的性能。在实际应用中，如果原始数据集本身较为复杂，那么使用主成分分析可以使我们仅需要考虑几个综合指标，而且又不至于损失太多信息。一方面，它更容易帮助我们抓住问题的主要矛盾；另一方面，它又极大的提高了我们的分析效率。</p>
 <p>假设我们对某一事物的研究涉及到P个指标，分别用$x_1,x_2,…,x_p$表示，那么n个样本的数据矩阵为：</p>
 <p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-b3725f2047ca72920ae044775917f9a9_1440w.jpg" alt="img"></p>
@@ -263,37 +323,13 @@
 <li>各个F满足系数平方和为1</li>
 </ol>
 <p>基于以上三个原则，得到的综合变量F，分别称之为原始变量的第一，第二，…，第p个主成分。在实际使用中，我们通常只挑选前几个方差最大的主成分，从而实现数据降维，达到简化系统结构的目的。</p>
-<h1 id="贝叶斯决策论"><a href="#贝叶斯决策论" class="headerlink" title="贝叶斯决策论"></a>贝叶斯决策论</h1><p>对分类任务而言，在所有相关概率都已知的理想情形下，贝叶斯决策论考虑如何基于概率和误判损失来选择最优的类别标记。</p>
-<h2 id="朴素贝叶斯分类"><a href="#朴素贝叶斯分类" class="headerlink" title="朴素贝叶斯分类"></a>朴素贝叶斯分类</h2><p>对于给出的待分类项，求解在此项出现的条件下各个类别出现的概率，哪个类别的概率最大，就认为此待分类项属于哪个类别。</p>
-<p>Laplace校准</p>
-<h1 id="回归分析"><a href="#回归分析" class="headerlink" title="回归分析"></a>回归分析</h1><p>回归分析是一种<strong>预测</strong>性的建模技术，它估计了因变量和自变量之间的关系（影响强度和具体关系）。这种技术通常用于预测分析，时间序列模型以及发现变量之间的<strong>因果</strong>关系。</p>
-<p>根据<strong>自变量的个数，因变量的类型以及回归线的形状</strong>的不同，有不同回归方法。</p>
-<p>在各自类型之下，需要通过最小化损失函数（误差函数）来确定具体的参数值。</p>
-<p>常见的回归方程有：</p>
-<h2 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h2><p>Linear Regression：因变量是连续的，自变量可以是连续的也可以是离散的，回归线的性质是线性的。</p>
-<p>损失函数 – 最小二乘法：最小化每个数据点到线的垂直偏差平方和来计算最佳拟合线</p>
-<h2 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h2><p>Logistic Regression：因变量的类型属于二元变量</p>
-<p>损失函数 – 极大似然估计</p>
-<p>需要大的样本量</p>
-<h2 id="逐步回归"><a href="#逐步回归" class="headerlink" title="逐步回归"></a>逐步回归</h2><p>Stepwise Regression：自变量的选择是在一个自动的过程中完成的</p>
-<h2 id="岭回归"><a href="#岭回归" class="headerlink" title="岭回归"></a>岭回归</h2><p>Ridge Regression：通过收缩参数λ（lambda）解决多重共线性问题（自变量高度相关）。岭回归通过给回归估计上增加一个偏差度，来降低标准误差。</p>
-<p>除常数项以外，这种回归的假设与最小二乘回归类似；它收缩了相关系数的值，但没有达到零，这表明它没有特征选择功能，这是一个正则化方法，并且使用的是L2正则化。</p>
-<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-8b082ec95854efa3bb66dcbbd9be5c36_1440w.jpg" alt="img"></p>
-<p>在这个公式中，有两个组成部分。第一个是最小二乘项，另一个是β2（β-平方）的λ倍，其中β是相关系数。</p>
-<h2 id="套索回归"><a href="#套索回归" class="headerlink" title="套索回归"></a>套索回归</h2><p>Lasso Regression：也会惩罚回归系数的绝对值大小。此外，它能够减少变化程度并提高线性回归模型的精度。</p>
-<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-c60d9285b983bf247f3dae519e757794_1440w.jpg" alt="img"></p>
-<p>Lasso （Least Absolute Shrinkage and Selection Operator）</p>
-<h2 id="ElasticNet"><a href="#ElasticNet" class="headerlink" title="ElasticNet"></a>ElasticNet</h2><p>Lasso和Ridge回归技术的混合体。它使用L1来训练并且L2优先作为正则化矩阵。当有多个相关的特征时，ElasticNet是很有用的。Lasso 会随机挑选他们其中的一个，而ElasticNet则会选择两个。</p>
-<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-246720018f1a105b08f4501950dd362d_1440w.jpg" alt="img"></p>
-<p>Lasso和Ridge之间的实际的优点是，它允许ElasticNet继承循环状态下Ridge的一些稳定性。</p>
-<p><a href="https://zhuanlan.zhihu.com/p/58714364" target="_blank" rel="noopener">参考</a></p>
-<h1 id="维数灾难"><a href="#维数灾难" class="headerlink" title="维数灾难"></a>维数灾难</h1><p>维数增多带来的高维空间数据稀疏化问题：</p>
+<h2 id="维数灾难"><a href="#维数灾难" class="headerlink" title="维数灾难"></a>维数灾难</h2><p>维数增多带来的高维空间数据稀疏化问题：</p>
 <ul>
 <li>在p维空间，N个点两两之间的平均距离为$N^{-1/p}$，需要$N^p$个点来维持1/N的平均距离。</li>
 <li>N个点在p维单位球内随机分布，则随着p的增大，这些点会越来越远离单位球的中心，转而往外缘分散。这个定理源于各点距单位球中心距离的中间值计算公式：<img src="https://www.zhihu.com/equation?tex=d%28p%2CN%29%3D%281-%5Cfrac%7B1%7D%7B2%7D%5E%7B%5Cfrac%7B1%7D%7BN%7D%7D%29%5E%5Cfrac%7B1%7D%7Bp%7D" alt="公式">)当p→∞时，d(p,N)→1。很显然，当N变大时，这个距离趋近于0。</li>
 </ul>
 <p>当维数增大时，空间数据会变得更稀疏，这将导致bias和variance的增加，最后影响模型的预测效果。</p>
-<h1 id="方差-偏差分解"><a href="#方差-偏差分解" class="headerlink" title="方差-偏差分解"></a>方差-偏差分解</h1><p>bias-variance decomposition</p>
+<h2 id="方差-偏差分解"><a href="#方差-偏差分解" class="headerlink" title="方差-偏差分解"></a>方差-偏差分解</h2><p>bias-variance decomposition</p>
 <p>训练数据集的损失与测试数据集的损失之间的差异就叫做泛化误差（generalization error）。</p>
 <p>泛化误差可以分解为：</p>
 <p><strong>方差（Variance）</strong>：使用样本数相同的不同训练集产生的方差，即不同的训练数据集训练出的模型输出值之间的差异。</p>
@@ -312,20 +348,19 @@
 <p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-69a3c3949b21f1c016dbb01780ebdeca_1440w.jpg" alt="img"></p>
 <p>泛化性能是由学习算法的能力、数据的充分性以及学习任务本身的难度所共同决定的。给定学习任务，为了取得好的泛化性能，则需使偏差较小，即能够充分拟合数据，并且使方差较小，即使得数据扰动产生的影响小。</p>
 <p><a href="https://zhuanlan.zhihu.com/p/38853908" target="_blank" rel="noopener">参考</a></p>
-<h1 id="核方法"><a href="#核方法" class="headerlink" title="核方法"></a>核方法</h1><p><a href="https://zhuanlan.zhihu.com/p/61123737" target="_blank" rel="noopener">SVM</a></p>
-<h1 id="概率估计"><a href="#概率估计" class="headerlink" title="概率估计"></a>概率估计</h1><p>我们可以通过求解概率函数$P(Y|X)$来估计$f:X\to Y$，若已知所有 RV 的 joint distribution，很容易可以算出概率函数的数值解，但是通常情况需要的样本太大，只能通过其他方法来估计$f:X\to Y$ </p>
+<h2 id="概率估计"><a href="#概率估计" class="headerlink" title="概率估计"></a>概率估计</h2><p>我们可以通过求解概率函数$P(Y|X)$来估计$f:X\to Y$，若已知所有 RV 的 joint distribution，很容易可以算出概率函数的数值解，但是通常情况需要的样本太大，只能通过其他方法来估计$f:X\to Y$ </p>
 <ol>
 <li>be smart about how we estimate probability parameters from available data: MLE, MAP</li>
 <li>be smart about how we represent joint probability distributions: Naïve Bayes, Bayes Nets</li>
 </ol>
-<h2 id="MLE"><a href="#MLE" class="headerlink" title="MLE"></a>MLE</h2><p>Maximum Likelihood Estimation</p>
+<h3 id="MLE"><a href="#MLE" class="headerlink" title="MLE"></a>MLE</h3><p>Maximum Likelihood Estimation</p>
 <p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/image-20200419161827133.png" alt="MLE"></p>
 <p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/image-20200419162041583.png" alt="MLE2"></p>
 <p>通常用$\ell (\theta)$表示$lnP(D|\theta)$，用$L(\theta)$表示似然函数$P(D|\theta)$ </p>
 <p>逐点最小化：</p>
 <p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/image-20200419162526934.png" alt="image-20200419162526934"></p>
 <p>可得到所需参数$\theta$ </p>
-<h2 id="MAP"><a href="#MAP" class="headerlink" title="MAP"></a>MAP</h2><p>Maximum a Posteriori Probability Estimation</p>
+<h3 id="MAP"><a href="#MAP" class="headerlink" title="MAP"></a>MAP</h3><p>Maximum a Posteriori Probability Estimation</p>
 <p>这是贝叶斯的方法，通过最大化后验概率，来使得参数估计可以容纳先验假设$P(\theta)$，其余和MLE相同</p>
 <p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/image-20200419162750421.png" alt="image-20200419162750421"></p>
 <p>$P(\theta)$与$\theta$无关，只起到归一化作用，所以一般忽略为：</p>
@@ -334,19 +369,36 @@
 <p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/image-20200419163110416.png" alt="image-20200419163110416"></p>
 <p>（参考ML version2 chapter2 Estimating Probabilities）</p>
 <p>用这两种方法估计伯努利分布</p>
-<h1 id="概率图模型"><a href="#概率图模型" class="headerlink" title="概率图模型"></a>概率图模型</h1><p><a href="https://zhuanlan.zhihu.com/p/81477302" target="_blank" rel="noopener">概率图模型</a></p>
-<h2 id="Naive-Bayes"><a href="#Naive-Bayes" class="headerlink" title="Naïve Bayes"></a>Naïve Bayes</h2><h2 id="Bayes-Nets"><a href="#Bayes-Nets" class="headerlink" title="Bayes Nets"></a>Bayes Nets</h2><p>目的：因为naive bayes的条件独立假设太极端了，所以通过图结构表示变量/集合之间的条件独立关系</p>
-<p>两种图结构：</p>
+<h1 id="概率图模型"><a href="#概率图模型" class="headerlink" title="概率图模型"></a>概率图模型</h1><p><a href="http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html" target="_blank" rel="noopener">CMU PGM</a></p>
+<p>Graphical Models 给出了变量之间关联性的先验知识以及参数估计（MAP）的先验知识；联系观测到的训练数据，进行估计&amp;学习（常用于：Diagnosis, help systems, text analysis, time series models, …）</p>
+<p><strong>核心问题</strong>：处理高维随机变量 $p(x_1,x_2,…,x_p)$ </p>
+<p><strong>分类</strong>：</p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-714c1843f78b6aecdb0c57cdd08e1c6a_1440w.jpg" alt="img"></p>
 <ul>
 <li>有向图 aka Bayesian Networks</li>
 <li>无向图 aka Markov Random Fields</li>
 </ul>
-<p>Graphical Models 给出了变量之间关联性的先验知识以及参数估计（MAP）的先验知识；联系观测到的训练数据，进行估计&amp;学习（常用于：Diagnosis, help systems, text analysis, time series models, …）</p>
-<p>Conditional Independence：$P(X|Y,Z)=P(X|Z)$</p>
-<p>Marginal Independence：$P(X,Y)=P(X)P(Y)$</p>
-<p>BN包括 DAG($G=&lt;V,E&gt;$) 和 CPD/CPT( $P(X_i|Pa(X_i))$ )</p>
-<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/BNdef.png" alt="Screen Shot 2020-04-27 at 5.19.14 PM"></p>
-<p>相对于Naive Bayes的链式法则的展开，BN更加灵活的表示了条件独立关系，可以表示集合之间的独立关系，并且大大减少了独立参数的个数，从指数级降到了线性</p>
+<p>为了解决高维随机变量计算量巨大的问题，我们可以根据不同概率图表示的关系简化$p(x_1,x_2,…,x_p)$ </p>
+<p><strong>基本法则</strong>：</p>
+<ul>
+<li>Conditional Independence：乘法$P(X|Y,Z)=P(X|Z)$ </li>
+<li>Marginal Independence：加法/积分$P(X,Y)=P(X)P(Y)$ </li>
+</ul>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-1f99b4cbadaa82866ea4baa3118b8323_720w.png" alt="img"></p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-563d4852cc96f327d98a575c1b4acea7_720w.png" alt="img"></p>
+<p>可推出两个常用法则：链式法则；贝叶斯法则</p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-34f4356a1735f2797818be6dde57676b_720w.png" alt="img"></p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-e86a7c08e96c0fb7d2b964a45bbd5e4c_720w.png" alt="img"></p>
+<h2 id="Naive-Bayes"><a href="#Naive-Bayes" class="headerlink" title="Naïve Bayes"></a>Naïve Bayes</h2><p>其实不算PGM，非常naïve的一个假设：所有维度相互独立，所以可以直接展开：</p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-6bd6eb3a5df5f155db6a655296814147_720w.png" alt="img"></p>
+<p>相对于Naïve Bayes的链式法则的展开，BN更加灵活的表示了条件独立关系，可以表示集合之间的独立关系，并且大大减少了独立参数的个数，从指数级降到了线性</p>
+<p>属于生成模型</p>
+<h2 id="Bayesian-Networks"><a href="#Bayesian-Networks" class="headerlink" title="Bayesian Networks"></a>Bayesian Networks</h2><h3 id="Representation"><a href="#Representation" class="headerlink" title="Representation"></a>Representation</h3><p>BN包括：</p>
+<ul>
+<li>DAG：$G=&lt;V,E&gt;$ </li>
+<li>CPD/CPT：$P(X_i|Pa(X_i))$ </li>
+</ul>
+<p>V之间的条件独立关系可由D-separated和Markov Blanket表述</p>
 <p>Terminology:</p>
 <ul>
 <li>Parents = Pa(X) = immediate parents</li>
@@ -354,38 +406,144 @@
 <li>Children = Ch(X) = immediate children</li>
 <li>Descendents = De(X) = children, children of children, …</li>
 </ul>
+<p>分类：</p>
+<ul>
+<li>静态贝叶斯网络：简简单单的根据DAG分解高维随机变量就行</li>
+<li>动态贝叶斯网络 DBN：包括HMM和Kalman filters</li>
+</ul>
+<p>Hidden Markov Model是针对时序分析的一种方法time series，RNN也是针对时序分析的（需要更多数据，分类精度更高）</p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/HMM.png" alt="Screen Shot 2020-04-28 at 7.43.37 AM"></p>
+<h4 id="D-separated"><a href="#D-separated" class="headerlink" title="D-separated"></a>D-separated</h4><p>作用：从图中找到条件独立关系，简化计算</p>
+<p>三种基本拓扑结构：</p>
+<ul>
+<li>H-T和T-T：观测到C时，A与B之间通道阻塞，A与B独立；未观测到C时，A与B可通过C建立某种联系，A与B无marginal independent（$A \perp B |C$ &amp; $A \not\perp B$  ）</li>
+<li>H-H：观测到C时，A与B反而受到联系，不再独立；否则是marginal independent的（$A \not\perp B |C$ &amp; $A \perp B$  ）——explaining away</li>
+</ul>
+<p>D-separated 其实就是三种基本拓扑节点关系的一个推广，将节点关系推广到集合关系。假定集合ABC相互之间不相交，若在A和C之间存在路径节点b，节点b和集合B之间满足关系：</p>
+<ol>
+<li>当b节点的拓扑关系为tail—tail, head—tail这两种类型是，$b\in B$ </li>
+<li>当b节点的拓扑关系为head—head结构时，b节点及其<u>后继节点</u>一定不在B集合当中，$b \not\in B$ </li>
+</ol>
+<p>则$A \perp C |B$ </p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/image-20200428154248188.png" alt="image-20200428154248188"></p>
+<p>可以用马尔科夫毯来表示这种关系</p>
+<h4 id="Markov-Blanket"><a href="#Markov-Blanket" class="headerlink" title="Markov Blanket"></a>Markov Blanket</h4><p>概率图中，为了使其中一个节点和其它节点条件独立，我们用毯子盖住这个节点周围与其相关的节点，那么毯子外面的节点和这个节点就条件独立了。</p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/MB.png" alt="Screen Shot 2020-04-28 at 11.11.58 AM"></p>
+<p>在基于全局节点条件下，求某一个节点的概率问题可以写为：<br>$$<br>p(x_i|x_{-i}) \propto \frac{p(x_i|x_{pa(i)})}{p(x_{ch(i)}|x_i,x_{pa(ch(i))})}<br>$$</p>
+<h4 id="Markov-Random-Fields"><a href="#Markov-Random-Fields" class="headerlink" title="Markov Random Fields"></a>Markov Random Fields</h4><p>马尔可夫网络中，我们可以用势能 （$\phi_i$）来表示不同结点或结点团之间的影响力大小。</p>
+<p>可以用联合分布（Gibbs分布）表示马尔可夫网络</p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-9989dbc8e5ddbf84c19f1b57ecd80805_1440w.jpg" alt="img"></p>
+<p>n阶马尔可夫假设（HMM是1-gram）下的马尔可夫过程：在一个过程中，每个状态的转移只依赖于前n个状态，并且只是个n阶的模型。</p>
 <h3 id="Inference"><a href="#Inference" class="headerlink" title="Inference"></a>Inference</h3><p>要是能知道CPD，带入就好了</p>
+<p>NP-hard问题</p>
+<p>Approximate methods too, e.g., Monte Carlo methods, …</p>
 <p>P14</p>
 <h3 id="Learning"><a href="#Learning" class="headerlink" title="Learning"></a>Learning</h3><p>Given training set D，find CPD</p>
-<p>For i=1to n：</p>
+<p>对于每个node i：</p>
 <ul>
-<li>确定$Pa(X_i)$来设定待学习参数</li>
-<li>MLE / MAP</li>
-<li>derivative = 0</li>
+<li>确定$Pa(X_i)$来设定CPD中待学习参数</li>
+<li>找到该节点的概率密度函数和对应的似然函数</li>
+<li>逐点最小化$L(\theta)$求得参数</li>
 </ul>
-<h3 id="D-separated"><a href="#D-separated" class="headerlink" title="D-separated"></a>D-separated</h3><p>目的：从图中判断条件独立关系</p>
+<p>HW3.3</p>
 <ul>
-<li>Each node is cond indep of non-descendents, given only its parents（T-T）</li>
-<li>X and Y are conditionally independent given Z if Z D-separates every path connecting X to Y</li>
-<li>Marginal independence : special case where Z={}</li>
+<li>Easy for known graph, fully observed data (MLE’s, MAP est.)</li>
+<li><strong>EM</strong> for partly observed data, known graph</li>
+<li>Learning graph structure: <strong>Chow-Liu</strong> for tree-structured networks</li>
+<li>Hardest when graph unknown, data incompletely observed</li>
 </ul>
-<p>D-separates：</p>
+<h4 id="EM算法"><a href="#EM算法" class="headerlink" title="EM算法"></a>EM算法</h4><p>Expectation - Maximization：是为了在概率图已知，数据未知或者部分未知的情况下应用bayes的算法</p>
 <ul>
-<li>H-T和T-T：观测到C时，A与B之间通道阻塞，A与B独立；为观测到C时，A与B可通过C建立某种联系，A与B无marginal independent（$A \models B |C$ &amp; $A \not\models B$  ）</li>
-<li>H-H：观测到C时，A与B反而受到联系，不再独立；否则是marginal independent的（$A \not\models B |C$ &amp; $A \models B$  ）——explaining away</li>
+<li>初始化 theta</li>
+<li>E-step：用 $X$ 和 $\theta$，计算 $P(X,Z|\theta ‘)$ </li>
+<li>M-step：更新theta：$\theta \to \arg\max\limits_{\theta ‘} Q(\theta ‘|\theta)$ ）<ul>
+<li>对于MLE来说：$Q(\theta ‘|\theta) = E_{P(Z|X,\theta)}[\log P(X,Z|\theta’)]$ </li>
 </ul>
-<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/ds.png" alt="Screen Shot 2020-04-28 at 11.09.57 AM"></p>
-<h3 id="Markov-Blanket"><a href="#Markov-Blanket" class="headerlink" title="Markov Blanket"></a>Markov Blanket</h3><p>概率图中，为了使其中一个节点和其它节点条件独立，我们用毯子盖住这个节点周围与其相关的节点，那么毯子外面的节点和这个节点就条件独立了。</p>
-<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/MB.png" alt="Screen Shot 2020-04-28 at 11.11.58 AM"></p>
-<p>马尔科夫链就是一串节点，其中每个节点的状态只与其父节点的状态相关。</p>
-<p>马尔科夫毯和马尔科夫链的关系就是都满足马尔科夫性质。</p>
-<p>##Bayes Network for a Hidden Markov Model</p>
-<p>HMM是针对时序分析的一种方法time series，RNN也是针对时序分析的（需要更多数据，分类精度更高）</p>
-<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/HMM.png" alt="Screen Shot 2020-04-28 at 7.43.37 AM"></p>
+</li>
+</ul>
+<p>Usupervised clustering is just extreme case for EM with zero labeled examples</p>
+<p>EM for Mixture of Gaussian Clustering：Lec11&amp;12P21</p>
+<h4 id="Chow-Liu算法"><a href="#Chow-Liu算法" class="headerlink" title="Chow-Liu算法"></a>Chow-Liu算法</h4><p>如何构建概率图？</p>
+<p>Chow-Liu Algorithm：minimizes Kullback-Leibler divergence，to finds “best” tree-structured network<br>$$<br>KL(P(X)||T(X)) \equiv \sum_k P(X=k)\log \frac{P(X=k)}{T(X=k)}<br>$$<br>To minimize $KL(P || T)$ , it suffices to find the tree network T that maximizes the sum of mutual informations $I(A,B)$ over its edges (like between variable A and B)<br>$$<br>I(A,B) = \sum_a \sum_b P(a,b) \log \frac{P(a,b)}{P(a)P(b)}<br>$$<br>for tree networks with nodes $X \equiv &lt;X_1,…,X_n&gt;$<br>$$<br>\begin{equation}<br>\begin{aligned}<br>KL(P(X)||T(X)) &amp;\equiv \sum_k P(X=k)\log \frac{P(X=k)}{T(X=k)} \&amp;= -\sum_i I(X_i,Pa(X_i)) + \sum_i H(X_i) - H(X_1 … X_n))<br>\end{aligned}<br>\end{equation}<br>$$</p>
+<ol>
+<li>for each pair of vars $A,B$, use data to estimate $P(A,B), P(A), P(B)$ </li>
+<li>for each pair of vars $A,B$ calculate mutual information $I(A,B)$ </li>
+<li>calculate the <em>maximum spanning tree</em> over the set of variables, using edge weights $I(A,B)$  (given $N$ vars, this costs only $O(N^2)$ time)</li>
+<li>add arrows to edges to form a directed-acyclic graph</li>
+<li>learn the CPD’s for this graph</li>
+</ol>
 <h1 id="学习理论"><a href="#学习理论" class="headerlink" title="学习理论"></a>学习理论</h1><p>Computational Learning Theory</p>
-<p>（参考 ML 7.1-7.4；林轩田MLF）</p>
+<p>（ML 7.1-7.4；林轩田MLF；西瓜 12）</p>
 <p>是一个“可计算与复杂度理论”和“机器学习”的交叉学科，可以看做是用算法分析的套路来分析机器学习模型和问题。用概率和组合数学的方法在某某限制下证明某某的上下限分别是多少</p>
-<h2 id="PAC-Learning"><a href="#PAC-Learning" class="headerlink" title="PAC Learning"></a>PAC Learning</h2><h2 id="VC-dimension"><a href="#VC-dimension" class="headerlink" title="VC-dimension"></a>VC-dimension</h2>
+<p>回答了是否可以从数据中拟合到真实的function；也可以由此发展出新的算法</p>
+<ul>
+<li>statistical learning theory（SLT）</li>
+<li>probably approximately correct（PAC）</li>
+</ul>
+<p>我们希望 h has small error over D，但是 $err_D(h)$ 不可测量（distribution未知），但是我们可以找到它的上限。我们可以计算的是训练误差 $err_S(h)$，所以希望用training error描述testing error的upper bound：</p>
+<p>TRUE error（generalization error）：$err_D(h) = \Pr(h(x)\not=c^*(x))$，就是不相等的期望（0,1 loss的情况下）对于整个distribution来说的分类错误率</p>
+<p>Training error（Empirical error）：$err_S(h)=\frac 1 m \sum_i I(h(x_i)\not = c^*(x_i))$ ，对于训练数据来说的分类错误率。</p>
+<p>两种情况：</p>
+<ul>
+<li>$c^* \in H$ ：Realizable</li>
+<li>$c^* \not\in H$ ：Agnostic learning（找到h close to c*）</li>
+</ul>
+<p><strong>Consistent Learner</strong>：$h(x)=c^*(x),\quad \forall x\in S.$ </p>
+<p><strong>Version Space (VS)</strong>：$VS_{H,S}={h\in H|h(x)=c^*(x), \forall x\in S.}$ </p>
+<p><strong>$\epsilon$-exhausted</strong>：$VS_{H,S}$ 被称为 $\epsilon$-exhauste，如果 $(\forall h\in VS_{H,S})err_D(h)&lt;\epsilon$ </p>
+<h2 id="PAC-learning"><a href="#PAC-learning" class="headerlink" title="PAC learning"></a>PAC learning</h2><p><strong>PAC Identify</strong>：若对于误差 $\epsilon&gt;0$，置信度 $\delta&lt;1$，所有真实函数 $c\in C$ 和分布 $D$，存在学习算法 $L$，其输出假设 $h\in H$ 满足 $P(E(h)\le \epsilon)\ge 1-\delta$，则称 $L$ 能从假设空间 $H$ 中 PAC Identify $C$  </p>
+<p><strong>PAC Learnable</strong>：若对于任何从分布 $D$ 中 $iid$ 采样得到的训练样本集合 $m$，$m$ 满足 $m\ge {\rm poly}(1/\epsilon,1/\delta,size(\textbf x),size(c))$ ，都有 $L$ 能PAC Identify $C$，则称 $C$ (对于$H$)是PAC Learnable 的.</p>
+<h2 id="VC-dimension"><a href="#VC-dimension" class="headerlink" title="VC dimension"></a>VC dimension</h2><p>VC dimension 描述了假设空间的复杂度</p>
+<p><strong>Growth function</strong>：增长函数表示假设空间 $H$ 对 $m$ 个示例所能赋予标记的最大可能结果数。$\prod_H(m)$ 为假设空间在数据集大小为m时的增长函数。</p>
+<p><strong>dichotomy</strong>：对于二分类问题来说，$H$ 中的假设对 $D$ 中 $m$ 个示例赋予标记的每种可能结果称为对$D$ 的一种对分</p>
+<p><strong>shattering</strong>：若假设空间 $H$ 能实现数据集 $D$ 上的所有对分，则称 $D$ 能被 $H$ 打散</p>
+<p><strong>VC dimension</strong>：假设空间 $H$ 的VC维是能被 $H$ 打散的最大的数据集大小：$VC(H)=max{m:\prod_H(m)=2^m}$。与数据分布无关。</p>
+<p>growth function和vc dim紧密相关，可以得到给予VC dim的泛化误差上限</p>
+<p><strong>Rademacher complexity</strong>：另一种刻画假设空间复杂度的方法，与 VC dim不同的是，它在一定程度上考虑了数据分布，所以通常比基于 VC dim 的复杂度更紧一点</p>
+<p><strong>Stability</strong>：我们还可以考虑算法的稳定性，即算法在输入发生变化时，输出的变化程度</p>
+<h1 id="集成学习"><a href="#集成学习" class="headerlink" title="集成学习"></a>集成学习</h1><p>[all from Robert E. Schapire, 2001, boosting survey]</p>
+<p>Boosting：提高任何学习算法正确率的通用方法</p>
+<ul>
+<li>find a base learner (or weak leaner)</li>
+<li>每一轮，用此learner学习training examples with different distribution or weighting。然后更新 distribution —— 如何更新？</li>
+<li>最后 combine 每一轮的weak learner into a single strong learner —— 如何combine？</li>
+</ul>
+<p>如何combine：一般来说就用多数投票的方法。As for combining the weak rules, simply taking a (weighted) majority vote of their predictions is natural and effective.</p>
+<hr>
+<p><strong>The boosting algorithm AdaBoost</strong> </p>
+<p>Given: $(x_1,y_1),…,(x_m,y_m)$ where $x_i \in X, y_i \in Y = {-1,+1}$ </p>
+<p>Initialize $D_1(i)=1/m$.<br>For $t=1,…,T$ : </p>
+<ul>
+<li>Train base learner using distribution $D_t$.</li>
+<li>Get base classifier $h_t:X\to \mathbb{R}$ for distribution $D_t$.</li>
+<li>Choose $\alpha_t \in \mathbb{R}$ .</li>
+<li>Update: $D_{t+1}(i)=\frac{D_t(i)}{Z_t}\exp[-\alpha_t y_i h_t (x_i)]$ where $Z_t$ is a normalization factor (chosen so that $D_{t+1}$ will be a distribution), and $y_i h_t (x_i)$ is an indicator.</li>
+</ul>
+<p>Output the final classifier:<br>$$<br>H(x)=sign(f(x))=sign(\sum_{t=1}^{T}\alpha_t h_t(x))<br>$$</p>
+<hr>
+<p><strong>Training error</strong></p>
+<p>更新 $D_t$ 的法则是最小化 training error</p>
+<p>训练误差的上限由Freund and Schapire给出：<br>$$<br>\frac1m |{i:H(x_i)}\not= y_i| \le \frac1m \sum_i \exp(-y_i f(x_i)) = \prod_t Z_t<br>$$<br>Proof: Lec15 P22-27</p>
+<p>训练误差上限随着 t 的增加，逐渐延伸，并且不断减小</p>
+<p>所以为了减小训练误差 in a greedy way，我们需要最小化：<br>$$<br>Z_t =\sum_i D_t(i) \exp(-y_i f(x_i))<br>$$<br>从而，对于binary classifiers，我们可以得到：<br>$$<br>\alpha_t = \frac12 ln(\frac{1-\epsilon_t}{\epsilon_t})<br>$$<br>并且，此时训练误差上限为 $\exp(-2\sum_t \gamma_t^2)$，其中 $\gamma_t = 1/2-\epsilon_t$ </p>
+<p>因为该上限最大值为 $e^{-2T\gamma^2}$，所以训练误差随 T 的减小而指数减小</p>
+<p>AdaBoost is doing a kind of steepest descent search to minimize training error‘s upper bound</p>
+<p><strong>Generalization error</strong></p>
+<p>generalization error is expected test error，is the <em>probability</em> of misclassifying a new example</p>
+<p>Freund and Schapire 证明测试误差上限与 T 有关：<br>$$<br>\hat{Pr}[H(x)\not=y]+\tilde{O}(\sqrt\frac{Td}{m})<br>$$<br>$m$ : the size of the sample; $d$ : the VC- dimension of the base classifier space; $T$ : the number of rounds of boosting.</p>
+<p>上式表明测试误差随着 T 的增加而变大，但是实际情况似乎不会过拟合</p>
+<p>Schapire等证明上限与margin有关，独立于 T ：</p>
+<p>margin就是分类正确和分类错误的D的权重之差：<br>$$<br>\begin{equation}<br>\begin{aligned}<br>margin_f(x,y) &amp;= \frac{yf(x)}{\sum_t|\alpha_t|} = \frac{y\sum_t\alpha_th_t(x)}{\sum_t|\alpha_t|}<br>\&amp;=\frac{1}{\sum_t|\alpha_t|}(\sum_{t:y=h_t(x)}\alpha_t - \sum_{t:y\not=h_t(x)}\alpha_t)<br>\end{aligned}<br>\end{equation}<br>$$<br>上限：<br>$$<br>\hat{Pr}[margin_f(x,y)\le\theta]+\tilde{O}(\sqrt\frac{d}{m\theta^2})<br>$$<br>for any $\theta&gt;0$ with high probability. (Lec16 P14)</p>
+<p>基于margin的概念，产生了一堆的算法，比如感知机、SVM之类的</p>
+<p><strong>感知机 perceptron</strong></p>
+<p>1957 Rosenblatt，Lec16 P19</p>
+<p>一种 Online Learning Model，二元分类的线形分类模型，判别方法，$f(x)=sign(w*x+b)$ 。得出一个特征空间中的划分超平面separating hyperplane。</p>
+<p><strong>在线学习</strong></p>
+<p>Example arrive sequentially.</p>
+<p>没有任何假设：no distributional assumptions</p>
+<p>目标：最小化错误个数（因为训练样本不是一次性给出，无法计算误差率）</p>
+<p>![Screen Shot 2020-05-21 at 9.27.53 AM](统计学习理论/Screen Shot 2020-05-21 at 9.27.53 AM.png)</p>
+<h1 id="核方法"><a href="#核方法" class="headerlink" title="核方法"></a>核方法</h1><h1 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h1><h1 id="semi-supervised-learning"><a href="#semi-supervised-learning" class="headerlink" title="semi-supervised learning"></a>semi-supervised learning</h1><h1 id="主动学习"><a href="#主动学习" class="headerlink" title="主动学习"></a>主动学习</h1><h1 id="unsupervised-learning"><a href="#unsupervised-learning" class="headerlink" title="unsupervised learning"></a>unsupervised learning</h1><h1 id="deep-learning"><a href="#deep-learning" class="headerlink" title="deep learning"></a>deep learning</h1>
         </div>
 
         
