@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="TSHOGX">
+
+
+    <meta name="subtitle" content="Valar Morghulis  Valar Dohaeris">
+
+
+
+
+<title>-TSHOGX-</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">TSHOGX&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                    <a class="menu-item" href="/ML">ML</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">TSHOGX&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                    <a class="menu-item" href="/ML">ML</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+    <article class="post-wrap page">
+        
+        <h2 class="post-title"></h2>
+        
+        <section class="post-content">
+            <p>统计学习是基于数据构建统计模型而对数据预测分析，包括 supervised、unsupervised、semi-supervised、reinforcement 等</p>
+<p>对于supervised来说，我们希望找到 input space 到 output space 的映射，所有这样的映射/模型构成的集合就是 hypothesis space，即我们的学习范围</p>
+<p>模型可以是决策函数 $Y=f(X)$ 或者概率函数 $P(y|x)$，不论哪种模型，X和Y都具有联合概率分布$P(X,Y)$，这是监督学习关于数据的基本假设，因此可以利用统计的方法学习</p>
+<ul>
+<li><strong>判别模型</strong> discriminative model：直接学习 $P(Y|X)$ or $f(X)$ 。回归，knn，SVM, 条件随机场，boosting，决策树，感知机等。优点：直接面对预测时，往往正确率更高；直接学习模型，简化学习问题</li>
+<li><strong>生成模型</strong> generative model：对 $P(x,y)$ 建模，生成每个label的最优概率，$P(Y|X) = \frac{P(X,Y)}{P(X)}$。朴素贝叶斯, HMM等。优点：解释性好，可以还原出联合概率分布；存在隐变量也行；学习时收敛速度更快</li>
+</ul>
+<h1 id="判别分析"><a href="#判别分析" class="headerlink" title="判别分析"></a>判别分析</h1><p>判别分析<strong>（discriminant analysis）</strong>是多元统计分析中较为成熟的一种分类方法，它的核心思想是<strong>“分类与判断”</strong>。</p>
+<h2 id="距离判别基本理论"><a href="#距离判别基本理论" class="headerlink" title="距离判别基本理论"></a>距离判别基本理论</h2><p>假设存在两个总体$G_1$和$G_2$，另有$x$为一个$p$维的样本值，计算得到该样本到两个总体的距离$d(x,G_1)$和$d(x,G_2)$，如果$d(x,G_1)$大于$d(x,G_2)$，则认为样本$x$属于总体$G_2$，反之亦然；若两者相等，则该样本待判。所以，最核心的问题在于距离的计算。</p>
+<ul>
+<li>欧式距离：在计算多个总体之间的距离时并不考虑方差的影响</li>
+<li>马氏距离：不受指标量纲及指标间相关性的影响（$d^2_{ij} = (x_i-x_j)^T S^{-1}(x_i-x_j), S^{-1}$ 为总体之间的协方差矩阵）</li>
+</ul>
+<h2 id="贝叶斯判别基本理论"><a href="#贝叶斯判别基本理论" class="headerlink" title="贝叶斯判别基本理论"></a>贝叶斯判别基本理论</h2><p>前提是假定我们已经对所要分析的数据有所了解（比如数据服从什么分别，各个类别的先验概率等）</p>
+<p>两类总体的概率密度函数和各自出现的先验概率已知，即可推断某样本$x_0$发生时，两类出现的概率大小，即样本属于令后验概率$P(G_i|x_0)$最大的$G$。</p>
+<h2 id="Fisher判别基本理论"><a href="#Fisher判别基本理论" class="headerlink" title="Fisher判别基本理论"></a>Fisher判别基本理论</h2><p>Fisher判别法的基本思想是“投影”，将$K$组$P$维的数据向低维空间投影，使其投影的组与组之间的方差尽可能的大，组内的方差尽可能的小。因此，Fisher判别法的重点就是选择适当的“投影轴”。判别函数为就是那个轴。</p>
+<p>非线性判别：在判别分析的实际应用中，对复杂的数据使用线性判别可能无法得到理想的效果。为此，我们需要使用类似于二次判别函数的非线性分类方法，将样本点投影到若干种二次曲面中，实现理想的判别效果。</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/The-Art-of-Data">参考</a></p>
+<h2 id="回归分析"><a href="#回归分析" class="headerlink" title="回归分析"></a>回归分析</h2><p>回归分析是一种<strong>预测</strong>性的建模技术，它估计了因变量和自变量之间的关系（影响强度和具体关系）。这种技术通常用于预测分析，时间序列模型以及发现变量之间的<strong>因果</strong>关系。</p>
+<p>根据<strong>自变量的个数，因变量的类型以及回归线的形状</strong>的不同，有不同回归方法。</p>
+<p>在各自类型之下，需要通过最小化损失函数（误差函数）来确定具体的参数值。</p>
+<p>常见的回归方程有：</p>
+<h3 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h3><p>Linear Regression：因变量是连续的，自变量可以是连续的也可以是离散的，回归线的性质是线性的。</p>
+<p>损失函数 – 最小二乘法：最小化每个数据点到线的垂直偏差平方和来计算最佳拟合线</p>
+<h3 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h3><p>Logistic Regression：因变量的类型属于二元变量</p>
+<p>损失函数 – 极大似然估计</p>
+<p>需要大的样本量</p>
+<h3 id="逐步回归"><a href="#逐步回归" class="headerlink" title="逐步回归"></a>逐步回归</h3><p>Stepwise Regression：自变量的选择是在一个自动的过程中完成的</p>
+<h3 id="岭回归"><a href="#岭回归" class="headerlink" title="岭回归"></a>岭回归</h3><p>Ridge Regression：通过收缩参数λ（lambda）解决多重共线性问题（自变量高度相关）。岭回归通过给回归估计上增加一个偏差度，来降低标准误差。</p>
+<p>除常数项以外，这种回归的假设与最小二乘回归类似；它收缩了相关系数的值，但没有达到零，这表明它没有特征选择功能，这是一个正则化方法，并且使用的是L2正则化。</p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-8b082ec95854efa3bb66dcbbd9be5c36_1440w.jpg" alt="img"></p>
+<p>在这个公式中，有两个组成部分。第一个是最小二乘项，另一个是β2（β-平方）的λ倍，其中β是相关系数。</p>
+<h3 id="套索回归"><a href="#套索回归" class="headerlink" title="套索回归"></a>套索回归</h3><p>Lasso Regression：也会惩罚回归系数的绝对值大小。此外，它能够减少变化程度并提高线性回归模型的精度。</p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-c60d9285b983bf247f3dae519e757794_1440w.jpg" alt="img"></p>
+<p>Lasso （Least Absolute Shrinkage and Selection Operator）</p>
+<h3 id="ElasticNet"><a href="#ElasticNet" class="headerlink" title="ElasticNet"></a>ElasticNet</h3><p>Lasso和Ridge回归技术的混合体。它使用L1来训练并且L2优先作为正则化矩阵。当有多个相关的特征时，ElasticNet是很有用的。Lasso 会随机挑选他们其中的一个，而ElasticNet则会选择两个。</p>
+<p><img src="%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/v2-246720018f1a105b08f4501950dd362d_1440w.jpg" alt="img"></p>
+<p>Lasso和Ridge之间的实际的优点是，它允许ElasticNet继承循环状态下Ridge的一些稳定性。</p>
+<p>[参考](</p>
+
+        </section>
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© TSHOGX | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

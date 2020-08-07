@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="TSHOGX">
+
+
+    <meta name="subtitle" content="Valar Morghulis  Valar Dohaeris">
+
+
+
+
+<title>-TSHOGX-</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">TSHOGX&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                    <a class="menu-item" href="/ML">ML</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">TSHOGX&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                    <a class="menu-item" href="/ML">ML</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+    <article class="post-wrap page">
+        
+        <h2 class="post-title"></h2>
+        
+        <section class="post-content">
+            <h1 id="学习理论"><a href="#学习理论" class="headerlink" title="学习理论"></a>学习理论</h1><p>Computational Learning Theory</p>
+<p>（ML 7.1-7.4；林轩田MLF；西瓜 12）</p>
+<p>是一个“可计算与复杂度理论”和“机器学习”的交叉学科，可以看做是用算法分析的套路来分析机器学习模型和问题。用概率和组合数学的方法在某某限制下证明某某的上下限分别是多少</p>
+<p>回答了是否可以从数据中拟合到真实的function；也可以由此发展出新的算法</p>
+<ul>
+<li>statistical learning theory（SLT）</li>
+<li>probably approximately correct（PAC）</li>
+</ul>
+<p>我们希望 h has small error over D，但是 $err_D(h)$ 不可测量（distribution未知），但是我们可以找到它的上限。我们可以计算的是训练误差 $err_S(h)$，所以希望用training error描述testing error的upper bound：</p>
+<ul>
+<li>True error（generalization error）：$err_D(h) = \Pr(h(x)\not=c^*(x))$，就是不相等的期望（0,1 loss的情况下）对于整个distribution来说的分类错误率</li>
+<li>Training error（Empirical error）：$err_S(h)=\frac 1 m \sum_i I(h(x_i)\not = c^*(x_i))$ ，对于训练数据来说的分类错误率。</li>
+</ul>
+<p>两种情况：</p>
+<ul>
+<li>$c^* \in H$ ：Realizable</li>
+<li>$c^* \not\in H$ ：Agnostic learning（找到h close to c*）</li>
+</ul>
+<p><strong>Consistent Learner</strong>：$h(x)=c^*(x),\quad \forall x\in S.$ </p>
+<p>*<em>Version Space (VS)**：$VS_{H,S}={h\in H|h(x)=c^</em>(x), \forall x\in S.}$ </p>
+<p><strong>$\epsilon$-exhausted</strong>：$VS_{H,S}$ 被称为 $\epsilon$-exhauste，如果 $(\forall h\in VS_{H,S})err_D(h)&lt;\epsilon$ </p>
+<h2 id="PAC-learning"><a href="#PAC-learning" class="headerlink" title="PAC learning"></a>PAC learning</h2><p><strong>PAC Identify</strong>：若对于误差 $\epsilon&gt;0$，置信度 $\delta&lt;1$，所有真实函数 $c\in C$ 和分布 $D$，存在学习算法 $L$，其输出假设 $h\in H$ 满足 $P(E(h)\le \epsilon)\ge 1-\delta$，则称 $L$ 能从假设空间 $H$ 中 PAC Identify $C$  </p>
+<p><strong>PAC Learnable</strong>：若对于任何从分布 $D$ 中 $iid$ 采样得到的训练样本集合 $m$，$m$ 满足 $m\ge {\rm poly}(1/\epsilon,1/\delta,size(\textbf x),size(c))$ ，都有 $L$ 能PAC Identify $C$，则称 $C$ (对于$H$)是PAC Learnable 的.</p>
+<h2 id="VC-dimension"><a href="#VC-dimension" class="headerlink" title="VC dimension"></a>VC dimension</h2><p>VC dimension 描述了假设空间的复杂度</p>
+<p><strong>Growth function</strong>：增长函数表示假设空间 $H$ 对 $m$ 个示例所能赋予标记的最大可能结果数。$\prod_H(m)$ 为假设空间在数据集大小为m时的增长函数。</p>
+<p><strong>dichotomy</strong>：对于二分类问题来说，$H$ 中的假设对 $D$ 中 $m$ 个示例赋予标记的每种可能结果称为对$D$ 的一种对分</p>
+<p><strong>shattering</strong>：若假设空间 $H$ 能实现数据集 $D$ 上的所有对分，则称 $D$ 能被 $H$ 打散</p>
+<p><strong>VC dimension</strong>：假设空间 $H$ 的VC维是能被 $H$ 打散的最大的数据集大小：$VC(H)=max{m:\prod_H(m)=2^m}$。与数据分布无关。</p>
+<p>growth function和vc dim紧密相关，可以得到给予VC dim的泛化误差上限</p>
+<p><strong>Rademacher complexity</strong>：另一种刻画假设空间复杂度的方法，与 VC dim不同的是，它在一定程度上考虑了数据分布，所以通常比基于 VC dim 的复杂度更紧一点</p>
+<p><strong>Stability</strong>：我们还可以考虑算法的稳定性，即算法在输入发生变化时，输出的变化程度</p>
+
+        </section>
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© TSHOGX | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

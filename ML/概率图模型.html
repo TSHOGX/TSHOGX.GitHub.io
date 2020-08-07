@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="TSHOGX">
+
+
+    <meta name="subtitle" content="Valar Morghulis  Valar Dohaeris">
+
+
+
+
+<title>概率图模型 | -TSHOGX-</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+        
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">TSHOGX&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                    <a class="menu-item" href="/ML">ML</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">TSHOGX&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                    <a class="menu-item" href="/ML">ML</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+    <article class="post-wrap page">
+        
+        <h2 class="post-title">概率图模型</h2>
+        
+        <section class="post-content">
+            <h2 id="概率估计"><a href="#概率估计" class="headerlink" title="概率估计"></a>概率估计</h2><p>我们可以通过求解概率函数$P(Y|X)$来估计$f:X\to Y$，若已知所有 RV 的 joint distribution，很容易可以算出概率函数的数值解，但是通常情况需要的样本太大，只能通过其他方法来估计$f:X\to Y$ </p>
+<ol>
+<li>be smart about how we estimate probability parameters from available data: MLE, MAP</li>
+<li>be smart about how we represent joint probability distributions: Naïve Bayes, Bayes Nets</li>
+</ol>
+<h3 id="MLE"><a href="#MLE" class="headerlink" title="MLE"></a>MLE</h3><p>Maximum Likelihood Estimation</p>
+<p><img src="%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/image-20200419161827133.png" alt="MLE"></p>
+<p><img src="%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/image-20200419162041583.png" alt="MLE2"></p>
+<p>通常用$\ell (\theta)$表示$lnP(D|\theta)$，用$L(\theta)$表示似然函数$P(D|\theta)$ </p>
+<p>逐点最小化：</p>
+<p><img src="%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/image-20200419162526934.png" alt="image-20200419162526934"></p>
+<p>可得到所需参数$\theta$ </p>
+<h3 id="MAP"><a href="#MAP" class="headerlink" title="MAP"></a>MAP</h3><p>Maximum a Posteriori Probability Estimation</p>
+<p>这是贝叶斯的方法，通过最大化后验概率，来使得参数估计可以容纳先验假设$P(\theta)$，其余和MLE相同</p>
+<p><img src="%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/image-20200419162750421.png" alt="image-20200419162750421"></p>
+<p>$P(\theta)$与$\theta$无关，只起到归一化作用，所以一般忽略为：</p>
+<p><img src="%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/image-20200419162923462.png" alt="image-20200419162923462"></p>
+<p>其中先验概率未知，其他都可以表示，一种对贝叶斯估计的批判就是人们通常为了简化计算选择先验概率，此处我们可以选择Beta distribution：</p>
+<p><img src="%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/image-20200419163110416.png" alt="image-20200419163110416"></p>
+<p>（参考ML version2 chapter2 Estimating Probabilities）</p>
+<p>用这两种方法估计伯努利分布</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p><a target="_blank" rel="noopener" href="http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html">CMU PGM</a></p>
+<p>Graphical Models 给出了变量之间关联性的先验知识以及参数估计（MAP）的先验知识；联系观测到的训练数据，进行估计&amp;学习（常用于：Diagnosis, help systems, text analysis, time series models, …）</p>
+<p><strong>核心问题</strong>：处理高维随机变量 $p(x_1,x_2,…,x_p)$ </p>
+<p><strong>分类</strong>：</p>
+<p><img src="%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/v2-714c1843f78b6aecdb0c57cdd08e1c6a_1440w.jpg" alt="img"></p>
+<ul>
+<li>有向图 aka Bayesian Networks</li>
+<li>无向图 aka Markov Random Fields</li>
+</ul>
+<p>为了解决高维随机变量计算量巨大的问题，我们可以根据不同概率图表示的关系简化$p(x_1,x_2,…,x_p)$ </p>
+<p><strong>基本法则</strong>：</p>
+<ul>
+<li>Conditional Independence：乘法$P(X|Y,Z)=P(X|Z)$ </li>
+<li>Marginal Independence：加法/积分$P(X,Y)=P(X)P(Y)$ </li>
+</ul>
+<p><img src="%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/v2-1f99b4cbadaa82866ea4baa3118b8323_720w.png" alt="img"></p>
+<p><img src="%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/v2-563d4852cc96f327d98a575c1b4acea7_720w.png" alt="img"></p>
+<p>可推出两个常用法则：链式法则；贝叶斯法则</p>
+<p><img src="%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/v2-34f4356a1735f2797818be6dde57676b_720w.png" alt="img"></p>
+<p><img src="%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/v2-e86a7c08e96c0fb7d2b964a45bbd5e4c_720w.png" alt="img"></p>
+<h2 id="Naive-Bayes"><a href="#Naive-Bayes" class="headerlink" title="Naïve Bayes"></a>Naïve Bayes</h2><p>其实不算PGM，非常naïve的一个假设：所有维度相互独立，所以可以直接展开：</p>
+<p><img src="%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/v2-6bd6eb3a5df5f155db6a655296814147_720w.png" alt="img"></p>
+<p>相对于Naïve Bayes的链式法则的展开，BN更加灵活的表示了条件独立关系，可以表示集合之间的独立关系，并且大大减少了独立参数的个数，从指数级降到了线性</p>
+<p>属于生成模型</p>
+<h2 id="Bayesian-Networks"><a href="#Bayesian-Networks" class="headerlink" title="Bayesian Networks"></a>Bayesian Networks</h2><h3 id="Representation"><a href="#Representation" class="headerlink" title="Representation"></a>Representation</h3><p>BN包括：</p>
+<ul>
+<li>DAG：$G=&lt;V,E&gt;$ </li>
+<li>CPD/CPT：$P(X_i|Pa(X_i))$ </li>
+</ul>
+<p>V之间的条件独立关系可由D-separated和Markov Blanket表述</p>
+<p>Terminology:</p>
+<ul>
+<li>Parents = Pa(X) = immediate parents</li>
+<li>Antecedents = An(X) = parents, parents of parents, …</li>
+<li>Children = Ch(X) = immediate children</li>
+<li>Descendents = De(X) = children, children of children, …</li>
+</ul>
+<p>分类：</p>
+<ul>
+<li>静态贝叶斯网络：简简单单的根据DAG分解高维随机变量就行</li>
+<li>动态贝叶斯网络 DBN：包括HMM和Kalman filters</li>
+</ul>
+<p>Hidden Markov Model是针对时序分析的一种方法time series，RNN也是针对时序分析的（需要更多数据，分类精度更高）</p>
+<p><img src="%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/HMM.png" alt="Screen Shot 2020-04-28 at 7.43.37 AM"></p>
+<h4 id="D-separated"><a href="#D-separated" class="headerlink" title="D-separated"></a>D-separated</h4><p>作用：从图中找到条件独立关系，简化计算</p>
+<p>三种基本拓扑结构：</p>
+<ul>
+<li>H-T和T-T：观测到C时，A与B之间通道阻塞，A与B独立；未观测到C时，A与B可通过C建立某种联系，A与B无marginal independent（$A \perp B |C$ &amp; $A \not\perp B$  ）</li>
+<li>H-H：观测到C时，A与B反而受到联系，不再独立；否则是marginal independent的（$A \not\perp B |C$ &amp; $A \perp B$  ）——explaining away</li>
+</ul>
+<p>D-separated 其实就是三种基本拓扑节点关系的一个推广，将节点关系推广到集合关系。假定集合ABC相互之间不相交，若在A和C之间存在路径节点b，节点b和集合B之间满足关系：</p>
+<ol>
+<li>当b节点的拓扑关系为tail—tail, head—tail这两种类型是，$b\in B$ </li>
+<li>当b节点的拓扑关系为head—head结构时，b节点及其<u>后继节点</u>一定不在B集合当中，$b \not\in B$ </li>
+</ol>
+<p>则$A \perp C |B$ </p>
+<p><img src="%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/image-20200428154248188.png" alt="image-20200428154248188"></p>
+<p>可以用马尔科夫毯来表示这种关系</p>
+<h4 id="Markov-Blanket"><a href="#Markov-Blanket" class="headerlink" title="Markov Blanket"></a>Markov Blanket</h4><p>概率图中，为了使其中一个节点和其它节点条件独立，我们用毯子盖住这个节点周围与其相关的节点，那么毯子外面的节点和这个节点就条件独立了。</p>
+<p><img src="%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/MB.png" alt="Screen Shot 2020-04-28 at 11.11.58 AM"></p>
+<p>在基于全局节点条件下，求某一个节点的概率问题可以写为：<br>$$<br>p(x_i|x_{-i}) \propto \frac{p(x_i|x_{pa(i)})}{p(x_{ch(i)}|x_i,x_{pa(ch(i))})}<br>$$</p>
+<h4 id="Markov-Random-Fields"><a href="#Markov-Random-Fields" class="headerlink" title="Markov Random Fields"></a>Markov Random Fields</h4><p>马尔可夫网络中，我们可以用势能 （$\phi_i$）来表示不同结点或结点团之间的影响力大小。</p>
+<p>可以用联合分布（Gibbs分布）表示马尔可夫网络</p>
+<p><img src="%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/v2-9989dbc8e5ddbf84c19f1b57ecd80805_1440w.jpg" alt="img"></p>
+<p>n阶马尔可夫假设（HMM是1-gram）下的马尔可夫过程：在一个过程中，每个状态的转移只依赖于前n个状态，并且只是个n阶的模型。</p>
+<h3 id="Inference"><a href="#Inference" class="headerlink" title="Inference"></a>Inference</h3><p>要是能知道CPD，带入就好了</p>
+<p>NP-hard问题</p>
+<p>Approximate methods too, e.g., Monte Carlo methods, …</p>
+<p>P14</p>
+<h3 id="Learning"><a href="#Learning" class="headerlink" title="Learning"></a>Learning</h3><p>Given training set D，find CPD</p>
+<p>对于每个node i：</p>
+<ul>
+<li>确定$Pa(X_i)$来设定CPD中待学习参数</li>
+<li>找到该节点的概率密度函数和对应的似然函数</li>
+<li>逐点最小化$L(\theta)$求得参数</li>
+</ul>
+<p>HW3.3</p>
+<ul>
+<li>Easy for known graph, fully observed data (MLE’s, MAP est.)</li>
+<li><strong>EM</strong> for partly observed data, known graph</li>
+<li>Learning graph structure: <strong>Chow-Liu</strong> for tree-structured networks</li>
+<li>Hardest when graph unknown, data incompletely observed</li>
+</ul>
+<h4 id="EM算法"><a href="#EM算法" class="headerlink" title="EM算法"></a>EM算法</h4><p>Expectation - Maximization：是为了在概率图已知，数据未知或者部分未知的情况下应用bayes的算法</p>
+<ul>
+<li>初始化 theta</li>
+<li>E-step：用 $X$ 和 $\theta$，计算 $P(X,Z|\theta ‘)$ </li>
+<li>M-step：更新theta：$\theta \to \arg\max\limits_{\theta ‘} Q(\theta ‘|\theta)$ ）<ul>
+<li>对于MLE来说：$Q(\theta ‘|\theta) = E_{P(Z|X,\theta)}[\log P(X,Z|\theta’)]$ </li>
+</ul>
+</li>
+</ul>
+<p>Usupervised clustering is just extreme case for EM with zero labeled examples</p>
+<p>EM for Mixture of Gaussian Clustering：Lec11&amp;12P21</p>
+<h4 id="Chow-Liu算法"><a href="#Chow-Liu算法" class="headerlink" title="Chow-Liu算法"></a>Chow-Liu算法</h4><p>如何构建概率图？</p>
+<p>Chow-Liu Algorithm：minimizes Kullback-Leibler divergence，to finds “best” tree-structured network<br>$$<br>KL(P(X)||T(X)) \equiv \sum_k P(X=k)\log \frac{P(X=k)}{T(X=k)}<br>$$<br>To minimize $KL(P || T)$ , it suffices to find the tree network T that maximizes the sum of mutual informations $I(A,B)$ over its edges (like between variable A and B)<br>$$<br>I(A,B) = \sum_a \sum_b P(a,b) \log \frac{P(a,b)}{P(a)P(b)}<br>$$<br>for tree networks with nodes $X \equiv &lt;X_1,…,X_n&gt;$<br>$$<br>\begin{equation}<br>\begin{aligned}<br>KL(P(X)||T(X)) &amp;\equiv \sum_k P(X=k)\log \frac{P(X=k)}{T(X=k)} \&amp;= -\sum_i I(X_i,Pa(X_i)) + \sum_i H(X_i) - H(X_1 … X_n))<br>\end{aligned}<br>\end{equation}<br>$$</p>
+<ol>
+<li>for each pair of vars $A,B$, use data to estimate $P(A,B), P(A), P(B)$ </li>
+<li>for each pair of vars $A,B$ calculate mutual information $I(A,B)$ </li>
+<li>calculate the <em>maximum spanning tree</em> over the set of variables, using edge weights $I(A,B)$  (given $N$ vars, this costs only $O(N^2)$ time)</li>
+<li>add arrows to edges to form a directed-acyclic graph</li>
+<li>learn the CPD’s for this graph</li>
+</ol>
+
+        </section>
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© TSHOGX | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
